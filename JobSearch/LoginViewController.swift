@@ -8,37 +8,21 @@
 
 import UIKit
 
-class LoginViewController: UITableViewController {
+class LoginViewController: UITableViewController, UITextFieldDelegate{
     var socket = SIOSocket()
-    var data : [String] = []
+    var username:UITextField = UITextField()
+    var password:UITextField = UITextField()
+    //var data : [String] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationItem.title = "hello"
-        SIOSocket.socketWithHost("http://nerved.herokuapp.com", response: { (socket:SIOSocket!) in
-            
-            self.socket = socket;
-            self.socket.on("handshake", callback: { (args:[AnyObject]!)  in
-                let arg = args as SIOParameterArray
-                let dict = arg[0] as NSDictionary
-                let uuid: AnyObject? = dict["uuid"]
-                //self.UIID.text = uuid as String?
-                
-            })
-            self.socket.emit("queryall")
-            self.socket.on("response", callback: { (args:[AnyObject]!)  in
-                let arg = args as SIOParameterArray
-                println(arg.firstObject!)
-                let dict = arg[0] as NSDictionary
-                
-                let code: AnyObject? = dict["message"]
-                
-                self.data.append(code! as String)
-                self.tableView.reloadData()
-            })
-        })
+        self.title = "Login"
+        
     }
-
-
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -55,14 +39,12 @@ class LoginViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        if section == 0 {
-            return 2
-        } else {
-            return 1
-        }
+        
+        return 2
+        
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
+        
         if indexPath.section == 0 && indexPath.row == 0 {
 //            let name1:UILabel = UILabel()
 //            let username:UITextField = UITextField()
@@ -86,16 +68,71 @@ class LoginViewController: UITableViewController {
 ////            name1.superview?.addConstraint(constraint3)
 //            
             //Username row
-            
+            //cell = (tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as CustomTableViewCell)
+            let cell = (tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as CustomTableViewCell)
+            cell.label1.text = "Email       "
+            cell.textField1.delegate = self
+            username = cell.textField1
+            return cell
         } else if indexPath.section == 0 && indexPath.row == 1 {
-            let name2:UILabel = UILabel()
-            name2.text = "Password:"
+            let cell = (tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as CustomTableViewCell)
+            cell.label1.text = "Password"
+            cell.textField1.secureTextEntry = true;
+            cell.textField1.delegate = self;
+            password = cell.textField1
+            return cell
             //Password row
-        } else if indexPath.section == 1 {
+        } else if indexPath.section == 1 && indexPath.row == 0{
             //Submit row
+            let cell = tableView.dequeueReusableCellWithIdentifier("submit", forIndexPath:indexPath) as UITableViewCell
+            cell.textLabel?.text = "Login"
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("submit", forIndexPath: indexPath) as UITableViewCell
+            cell.textLabel?.text = "Sign Up"
+            return cell
+            
         }
+        
         //cell.textLabel?.text="hello"
-        return cell
+    }
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.section == 1 {
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            SIOSocket.socketWithHost("http://nerved.herokuapp.com", response: { (socket:SIOSocket!) in
+                
+                self.socket = socket;
+                self.socket.on("handshake", callback: { (args:[AnyObject]!)  in
+                    let arg = args as SIOParameterArray
+                    let dict = arg[0] as NSDictionary
+                    let uuid: AnyObject? = dict["uuid"]
+                    //self.UIID.text = uuid as String?
+                    
+                })
+                let userInfo = NSDictionary(objectsAndKeys: self.username.text,"email",self.password.text,"password")
+                
+                
+                
+                self.socket.emit("login", args: [userInfo])
+                self.socket.on("response", callback: { (args:[AnyObject]!)  in
+                    let arg = args as SIOParameterArray
+                    //println(arg.firstObject!)
+                    let dict = arg[0] as NSDictionary
+                    if  dict["code"] as Int != 200 {
+                        let alert = UIAlertView(title: "Incorrect email or password", message: "Incorrect email or password, please check your input", delegate: nil, cancelButtonTitle: "OK")
+                        alert.show()
+                    } else {
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                    }
+                    
+                    //let code: AnyObject? = dict["message"]
+                    
+                    //self.data.append(code! as String)
+                    //self.tableView.reloadData()
+                })
+            })
+        }
+        
     }
 
     /*

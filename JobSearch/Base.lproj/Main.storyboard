@@ -196,16 +196,42 @@
             </objects>
             <point key="canvasLocation" x="2696" y="-267"/>
         </scene>
-        <!--Login View Controller-->
-        <scene sceneID="siJ-i4-nmc">
+        <!--Table View Controller-->
+        <scene sceneID="cHQ-sd-zZr">
             <objects>
-                <tableViewController id="QUp-j0-VEk" customClass="LoginViewController" customModule="JobSearch" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="WEo-Qa-f8l">
+                <tableViewController id="qYT-CQ-xAh" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="mAP-Gs-BIs">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="KlV-II-ETh" customClass="CustomTableViewCell" customModule="JobSearch" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="N7B-tg-oNF">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="N7B-tg-oNF" id="k7B-ki-o1o">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="qYT-CQ-xAh" id="bRe-aq-RxD"/>
+                            <outlet property="delegate" destination="qYT-CQ-xAh" id="cMq-zz-O5f"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yha-y9-2UD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2696" y="-931"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="siJ-i4-nmc">
+            <objects>
+                <tableViewController id="QUp-j0-VEk" customClass="LoginViewController" customModule="JobSearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="WEo-Qa-f8l">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" id="KlV-II-ETh" customClass="CustomTableViewCell" customModule="JobSearch" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KlV-II-ETh" id="UbW-TB-t4O">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -216,22 +242,47 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2jK-Zc-CK8">
-                                            <rect key="frame" x="338" y="7" width="184" height="30"/>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2jK-Zc-CK8">
+                                            <rect key="frame" x="101" y="7" width="441" height="30"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="184" id="rZ8-aa-9UC"/>
+                                                <constraint firstAttribute="width" constant="184" id="Ff0-xL-N58"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="Ff0-xL-N58"/>
+                                                </mask>
+                                            </variation>
                                         </textField>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="RZA-on-5uP" firstAttribute="top" secondItem="UbW-TB-t4O" secondAttribute="topMargin" constant="3" id="H3X-de-qHR"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="2jK-Zc-CK8" secondAttribute="trailing" constant="70" id="Kh7-hL-1ay"/>
+                                        <constraint firstItem="2jK-Zc-CK8" firstAttribute="top" secondItem="UbW-TB-t4O" secondAttribute="topMargin" constant="-1" id="QXj-8r-Vxz"/>
                                         <constraint firstItem="RZA-on-5uP" firstAttribute="centerY" secondItem="UbW-TB-t4O" secondAttribute="centerY" id="YY4-p1-BRq"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="2jK-Zc-CK8" secondAttribute="trailing" constant="50" id="djO-Kg-ub6"/>
                                         <constraint firstItem="RZA-on-5uP" firstAttribute="leading" secondItem="UbW-TB-t4O" secondAttribute="leadingMargin" constant="41" id="gkJ-Wz-Gik"/>
-                                        <constraint firstItem="2jK-Zc-CK8" firstAttribute="baseline" secondItem="RZA-on-5uP" secondAttribute="baseline" constant="-1" id="wni-jB-HnB"/>
+                                        <constraint firstItem="2jK-Zc-CK8" firstAttribute="leading" secondItem="RZA-on-5uP" secondAttribute="trailing" constant="10" id="hWi-S2-jeZ"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="2jK-Zc-CK8" secondAttribute="bottom" constant="-1.5" id="jZB-q6-c8d"/>
                                     </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="label1" destination="RZA-on-5uP" id="czR-Y7-QN3"/>
+                                    <outlet property="textField1" destination="2jK-Zc-CK8" id="Agu-o9-PEr"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="submit" textLabel="2aN-pm-YqA" style="IBUITableViewCellStyleDefault" id="Fnw-FE-SJ7">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fnw-FE-SJ7" id="JXu-ba-aMz">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2aN-pm-YqA">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
