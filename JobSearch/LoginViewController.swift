@@ -9,16 +9,35 @@
 import UIKit
 
 class LoginViewController: UITableViewController {
-
+    var socket = SIOSocket()
+    var data : [String] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.navigationController?.navigationItem.title = "hello"
+        SIOSocket.socketWithHost("http://nerved.herokuapp.com", response: { (socket:SIOSocket!) in
+            
+            self.socket = socket;
+            self.socket.on("handshake", callback: { (args:[AnyObject]!)  in
+                let arg = args as SIOParameterArray
+                let dict = arg[0] as NSDictionary
+                let uuid: AnyObject? = dict["uuid"]
+                //self.UIID.text = uuid as String?
+                
+            })
+            self.socket.emit("queryall")
+            self.socket.on("response", callback: { (args:[AnyObject]!)  in
+                let arg = args as SIOParameterArray
+                println(arg.firstObject!)
+                let dict = arg[0] as NSDictionary
+                
+                let code: AnyObject? = dict["message"]
+                
+                self.data.append(code! as String)
+                self.tableView.reloadData()
+            })
+        })
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -30,13 +49,53 @@ class LoginViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 0
+        return 2
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 0
+        if section == 0 {
+            return 2
+        } else {
+            return 1
+        }
+    }
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
+        if indexPath.section == 0 && indexPath.row == 0 {
+//            let name1:UILabel = UILabel()
+//            let username:UITextField = UITextField()
+//            
+//            name1.text = "Username:"
+//            name1.frame.size = CGSizeMake(200, 50)
+//            username.borderStyle = UITextBorderStyle.RoundedRect
+//            username.frame.origin = CGPointMake(name1.frame.origin.x+name1.frame.size.width+10, name1.frame.origin.y)
+//            username.frame.size = CGSizeMake(200, cell.frame.size.height-10)
+//            cell.contentView.addSubview(name1)
+//            
+//            cell.contentView.addSubview(username)
+////            let constraint:NSLayoutConstraint = NSLayoutConstraint(item: username, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: name1, attribute: NSLayoutAttribute.Right, multiplier: 1, constant: 5)
+////            username.addConstraint(constraint)
+//            
+////            let constraint1:NSLayoutConstraint = NSLayoutConstraint(item: name1, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: cell.contentView, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 20)
+////            let constraint2:NSLayoutConstraint = NSLayoutConstraint(item: name1, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: name1.superview, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 5)
+////            let constraint3:NSLayoutConstraint = NSLayoutConstraint(item: name1, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: name1.superview, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: 0)
+////            name1.superview?.addConstraint(constraint1)
+////            name1.superview?.addConstraint(constraint2)
+////            name1.superview?.addConstraint(constraint3)
+//            
+            //Username row
+            
+        } else if indexPath.section == 0 && indexPath.row == 1 {
+            let name2:UILabel = UILabel()
+            name2.text = "Password:"
+            //Password row
+        } else if indexPath.section == 1 {
+            //Submit row
+        }
+        //cell.textLabel?.text="hello"
+        return cell
     }
 
     /*
