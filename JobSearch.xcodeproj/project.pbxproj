@@ -21,6 +21,9 @@
 		C04B23D71AAA829C002D42D8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C04B23D61AAA829C002D42D8 /* Images.xcassets */; };
 		C04B23DA1AAA829C002D42D8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C04B23D81AAA829C002D42D8 /* LaunchScreen.xib */; };
 		C04B23E61AAA829C002D42D8 /* JobSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04B23E51AAA829C002D42D8 /* JobSearchTests.swift */; };
+		C0F25D0C1AAABEDF001FC757 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0F25D0B1AAABEDF001FC757 /* MapKit.framework */; };
+		C0F25D0E1AAABEEB001FC757 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0F25D0D1AAABEEB001FC757 /* CoreLocation.framework */; };
+		C0F25D121AAADD66001FC757 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F25D111AAADD66001FC757 /* Job.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,9 @@
 		C04B23E41AAA829C002D42D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C04B23E51AAA829C002D42D8 /* JobSearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSearchTests.swift; sourceTree = "<group>"; };
 		C04B23EF1AAA837C002D42D8 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		C0F25D0B1AAABEDF001FC757 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		C0F25D0D1AAABEEB001FC757 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C0F25D111AAADD66001FC757 /* Job.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +68,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0F25D0E1AAABEEB001FC757 /* CoreLocation.framework in Frameworks */,
+				C0F25D0C1AAABEDF001FC757 /* MapKit.framework in Frameworks */,
 				6633375F1AAA91F60068C97B /* libPods-SIOSocket.a in Frameworks */,
 				BFD39F8DED05BBF59DE66ECC /* libPods.a in Frameworks */,
 			);
@@ -115,6 +123,8 @@
 		9EB7BB110C38C3ACEBF72E2E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C0F25D0D1AAABEEB001FC757 /* CoreLocation.framework */,
+				C0F25D0B1AAABEDF001FC757 /* MapKit.framework */,
 				6633375E1AAA91F60068C97B /* libPods-SIOSocket.a */,
 				1CCA1A05EE7112645865E440 /* libPods.a */,
 			);
@@ -152,6 +162,7 @@
 				66D00FB71AAAB345004FADF2 /* Profile */,
 				66D00FB81AAAB355004FADF2 /* Talent */,
 				66D00FAC1AAAAF37004FADF2 /* LocationViewController.swift */,
+				C0F25D111AAADD66001FC757 /* Job.swift */,
 				C04B23D61AAA829C002D42D8 /* Images.xcassets */,
 				C04B23D81AAA829C002D42D8 /* LaunchScreen.xib */,
 				C04B23CD1AAA829C002D42D8 /* Supporting Files */,
@@ -323,6 +334,7 @@
 				66D00FB31AAAB123004FADF2 /* TalentDetailViewController.swift in Sources */,
 				C04B23D21AAA829C002D42D8 /* JobViewController.swift in Sources */,
 				66D00FAF1AAAB061004FADF2 /* JobDetailViewController.swift in Sources */,
+				C0F25D121AAADD66001FC757 /* Job.swift in Sources */,
 				C04B23D01AAA829C002D42D8 /* AppDelegate.swift in Sources */,
 				66D00FB11AAAB0A8004FADF2 /* TalentViewController.swift in Sources */,
 				66D00FB51AAAB1F1004FADF2 /* ProfileViewController.swift in Sources */,
@@ -452,6 +464,7 @@
 			baseConfigurationReference = 84B94F40AF996EEE5468B21C /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: quanlan huang (FPV5RP366Y)";
 				INFOPLIST_FILE = JobSearch/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -469,6 +482,7 @@
 			baseConfigurationReference = 43544A0006E3F5BF8A62C6F6 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: quanlan huang (FPV5RP366Y)";
 				INFOPLIST_FILE = JobSearch/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
