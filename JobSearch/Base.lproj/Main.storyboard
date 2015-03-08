@@ -349,7 +349,13 @@
                             <outlet property="delegate" destination="JAA-2g-wLn" id="fRT-1l-CBH"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="1UG-4K-Wbs"/>
+                    <navigationItem key="navigationItem" id="1UG-4K-Wbs">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="YFu-Ip-Ri6">
+                            <connections>
+                                <action selector="cencel:" destination="JAA-2g-wLn" id="uTH-uC-JQO"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wMO-Yr-5tb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

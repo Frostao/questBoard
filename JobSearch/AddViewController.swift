@@ -8,7 +8,10 @@
 import CoreLocation
 import UIKit
 
-class AddViewController: UITableViewController,UITextFieldDelegate {
+class AddViewController: UITableViewController,UITextFieldDelegate , CLLocationManagerDelegate{
+    @IBAction func cencel(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     var socket = SIOSocket()
     var jobTitle = UITextField()
     var jobDescription = UITextField()
@@ -21,12 +24,12 @@ class AddViewController: UITableViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         let locationManager = CLLocationManager()
-        if CLLocationManager.locationServicesEnabled(){
-            
-            location = locationManager.location.coordinate
-        } else {
-            
+        if CLLocationManager.authorizationStatus() != CLAuthorizationStatus.AuthorizedWhenInUse{
             locationManager.requestWhenInUseAuthorization()
+        } else {
+            locationManager.delegate = self
+            locationManager.startUpdatingLocation()
+            
             
         }
         self.title = "Add Job"
@@ -90,7 +93,6 @@ class AddViewController: UITableViewController,UITextFieldDelegate {
                 self.duration = cell.textField1
             case 5:
                 cell.label1.text = "Remark"
-                cell.textField1.secureTextEntry = true
                 self.remarks = cell.textField1
             default:
                 break
@@ -155,7 +157,12 @@ class AddViewController: UITableViewController,UITextFieldDelegate {
     }
     
     
-    
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        if let currentLocation = locations {
+            let thisLocation : CLLocation = currentLocation[0] as CLLocation
+            location = thisLocation.coordinate
+        }
+    }
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
