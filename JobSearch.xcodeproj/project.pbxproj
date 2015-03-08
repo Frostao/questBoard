@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		6633375F1AAA91F60068C97B /* libPods-SIOSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6633375E1AAA91F60068C97B /* libPods-SIOSocket.a */; };
 		6647EFB31AAAE910006B5546 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6647EFB21AAAE910006B5546 /* CustomTableViewCell.swift */; };
+		66538B531AABA21B00BE6B7C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66538B521AABA21B00BE6B7C /* SignUpViewController.swift */; };
+		66538B551AABB86200BE6B7C /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66538B541AABB86200BE6B7C /* AddViewController.swift */; };
+		66538B571AABBC6200BE6B7C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66538B561AABBC6200BE6B7C /* CoreLocation.framework */; };
 		66D00FAB1AAAAE78004FADF2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D00FAA1AAAAE78004FADF2 /* LoginViewController.swift */; };
 		66D00FAD1AAAAF37004FADF2 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D00FAC1AAAAF37004FADF2 /* LocationViewController.swift */; };
 		66D00FAF1AAAB061004FADF2 /* JobDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D00FAE1AAAB061004FADF2 /* JobDetailViewController.swift */; };
@@ -39,6 +42,9 @@
 		43544A0006E3F5BF8A62C6F6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		6633375E1AAA91F60068C97B /* libPods-SIOSocket.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-SIOSocket.a"; path = "Pods/build/Debug-iphoneos/libPods-SIOSocket.a"; sourceTree = "<group>"; };
 		6647EFB21AAAE910006B5546 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		66538B521AABA21B00BE6B7C /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		66538B541AABB86200BE6B7C /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		66538B561AABBC6200BE6B7C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		66D00FAA1AAAAE78004FADF2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		66D00FAC1AAAAF37004FADF2 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		66D00FAE1AAAB061004FADF2 /* JobDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobDetailViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66538B571AABBC6200BE6B7C /* CoreLocation.framework in Frameworks */,
 				6633375F1AAA91F60068C97B /* libPods-SIOSocket.a in Frameworks */,
 				BFD39F8DED05BBF59DE66ECC /* libPods.a in Frameworks */,
 			);
@@ -117,6 +124,7 @@
 		9EB7BB110C38C3ACEBF72E2E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				66538B561AABBC6200BE6B7C /* CoreLocation.framework */,
 				6633375E1AAA91F60068C97B /* libPods-SIOSocket.a */,
 				1CCA1A05EE7112645865E440 /* libPods.a */,
 			);
@@ -151,7 +159,9 @@
 				66D00FB61AAAB330004FADF2 /* JobTab */,
 				66D00FAA1AAAAE78004FADF2 /* LoginViewController.swift */,
 				6647EFB21AAAE910006B5546 /* CustomTableViewCell.swift */,
+				66538B521AABA21B00BE6B7C /* SignUpViewController.swift */,
 				C04B23D31AAA829C002D42D8 /* Main.storyboard */,
+				66538B541AABB86200BE6B7C /* AddViewController.swift */,
 				66D00FB71AAAB345004FADF2 /* Profile */,
 				66D00FB81AAAB355004FADF2 /* Talent */,
 				66D00FAC1AAAAF37004FADF2 /* LocationViewController.swift */,
@@ -326,7 +336,9 @@
 				6647EFB31AAAE910006B5546 /* CustomTableViewCell.swift in Sources */,
 				66D00FAB1AAAAE78004FADF2 /* LoginViewController.swift in Sources */,
 				66D00FB31AAAB123004FADF2 /* TalentDetailViewController.swift in Sources */,
+				66538B551AABB86200BE6B7C /* AddViewController.swift in Sources */,
 				C04B23D21AAA829C002D42D8 /* JobViewController.swift in Sources */,
+				66538B531AABA21B00BE6B7C /* SignUpViewController.swift in Sources */,
 				66D00FAF1AAAB061004FADF2 /* JobDetailViewController.swift in Sources */,
 				C04B23D01AAA829C002D42D8 /* AppDelegate.swift in Sources */,
 				66D00FB11AAAB0A8004FADF2 /* TalentViewController.swift in Sources */,

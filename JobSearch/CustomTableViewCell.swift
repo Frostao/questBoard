@@ -13,6 +13,7 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var label1: UILabel!
     @IBOutlet weak var textField1: UITextField!
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
