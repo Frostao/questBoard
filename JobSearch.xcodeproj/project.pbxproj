@@ -20,6 +20,9 @@
 		C064FBD91AAB550F008B3848 /* JobDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C064FBD81AAB550F008B3848 /* JobDetailViewController.swift */; };
 		C064FBDC1AAB838A008B3848 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C064FBDB1AAB838A008B3848 /* Images.xcassets */; };
 		C064FBDF1AAB9E3A008B3848 /* JobTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C064FBDE1AAB9E3A008B3848 /* JobTableViewCell.swift */; };
+		C06D4C4D1AABE6D00034230D /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06D4C4C1AABE6D00034230D /* AddViewController.swift */; };
+		C06D4C4F1AABE6DA0034230D /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06D4C4E1AABE6DA0034230D /* CustomTableViewCell.swift */; };
+		C06D4C511AABE6EA0034230D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06D4C501AABE6EA0034230D /* SignUpViewController.swift */; };
 		C0F25D0C1AAABEDF001FC757 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0F25D0B1AAABEDF001FC757 /* MapKit.framework */; };
 		C0F25D0E1AAABEEB001FC757 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0F25D0D1AAABEEB001FC757 /* CoreLocation.framework */; };
 		C0F25D121AAADD66001FC757 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F25D111AAADD66001FC757 /* Job.swift */; };
@@ -56,6 +59,9 @@
 		C064FBD81AAB550F008B3848 /* JobDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobDetailViewController.swift; sourceTree = "<group>"; };
 		C064FBDB1AAB838A008B3848 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C064FBDE1AAB9E3A008B3848 /* JobTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobTableViewCell.swift; sourceTree = "<group>"; };
+		C06D4C4C1AABE6D00034230D /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		C06D4C4E1AABE6DA0034230D /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		C06D4C501AABE6EA0034230D /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		C0F25D0B1AAABEDF001FC757 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C0F25D0D1AAABEEB001FC757 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C0F25D111AAADD66001FC757 /* Job.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
@@ -148,6 +154,9 @@
 				C04B23CF1AAA829C002D42D8 /* AppDelegate.swift */,
 				66D00FB61AAAB330004FADF2 /* JobTab */,
 				66D00FAA1AAAAE78004FADF2 /* LoginViewController.swift */,
+				C06D4C501AABE6EA0034230D /* SignUpViewController.swift */,
+				C06D4C4E1AABE6DA0034230D /* CustomTableViewCell.swift */,
+				C06D4C4C1AABE6D00034230D /* AddViewController.swift */,
 				C04B23D31AAA829C002D42D8 /* Main.storyboard */,
 				66D00FB71AAAB345004FADF2 /* Profile */,
 				66D00FAC1AAAAF37004FADF2 /* LocationViewController.swift */,
@@ -319,11 +328,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C06D4C511AABE6EA0034230D /* SignUpViewController.swift in Sources */,
 				66D00FAB1AAAAE78004FADF2 /* LoginViewController.swift in Sources */,
 				C04B23D21AAA829C002D42D8 /* JobViewController.swift in Sources */,
+				C06D4C4D1AABE6D00034230D /* AddViewController.swift in Sources */,
 				C0F25D121AAADD66001FC757 /* Job.swift in Sources */,
 				C04B23D01AAA829C002D42D8 /* AppDelegate.swift in Sources */,
 				66D00FB51AAAB1F1004FADF2 /* ProfileViewController.swift in Sources */,
+				C06D4C4F1AABE6DA0034230D /* CustomTableViewCell.swift in Sources */,
 				C064FBD91AAB550F008B3848 /* JobDetailViewController.swift in Sources */,
 				66D00FAD1AAAAF37004FADF2 /* LocationViewController.swift in Sources */,
 				C064FBDF1AAB9E3A008B3848 /* JobTableViewCell.swift in Sources */,

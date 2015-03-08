@@ -1,31 +1,33 @@
 //
-//  LoginViewController.swift
+//  SignUpViewController.swift
 //  JobSearch
 //
-//  Created by Carl Chen on 3/6/15.
+//  Created by Carl Chen on 3/7/15.
 //  Copyright (c) 2015 Purdue Bang. All rights reserved.
 //
 
 import UIKit
 
-class LoginViewController: UITableViewController, UITextFieldDelegate{
-    @IBAction func cancel(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
+class SignUpViewController: UITableViewController,UITextFieldDelegate {
     var socket = SIOSocket()
-    var username:UITextField = UITextField()
-    var password:UITextField = UITextField()
-    
-    //var data : [String] = []
+    var name = UITextField()
+    var email = UITextField()
+    var profession = UITextField()
+    var talents = UITextField()
+    var phone = UITextField()
+    var password = UITextField()
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Login"
-        
+        self.title = "Sign Up"
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        return true
+        return true;
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -43,64 +45,48 @@ class LoginViewController: UITableViewController, UITextFieldDelegate{
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        
-        return 2
-        
+        if section == 0 {
+            return 6
+        } else {
+            return 1
+        }
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        if indexPath.section == 0 && indexPath.row == 0 {
-//            let name1:UILabel = UILabel()
-//            let username:UITextField = UITextField()
-//            
-//            name1.text = "Username:"
-//            name1.frame.size = CGSizeMake(200, 50)
-//            username.borderStyle = UITextBorderStyle.RoundedRect
-//            username.frame.origin = CGPointMake(name1.frame.origin.x+name1.frame.size.width+10, name1.frame.origin.y)
-//            username.frame.size = CGSizeMake(200, cell.frame.size.height-10)
-//            cell.contentView.addSubview(name1)
-//            
-//            cell.contentView.addSubview(username)
-////            let constraint:NSLayoutConstraint = NSLayoutConstraint(item: username, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: name1, attribute: NSLayoutAttribute.Right, multiplier: 1, constant: 5)
-////            username.addConstraint(constraint)
-//            
-////            let constraint1:NSLayoutConstraint = NSLayoutConstraint(item: name1, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: cell.contentView, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 20)
-////            let constraint2:NSLayoutConstraint = NSLayoutConstraint(item: name1, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: name1.superview, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 5)
-////            let constraint3:NSLayoutConstraint = NSLayoutConstraint(item: name1, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: name1.superview, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: 0)
-////            name1.superview?.addConstraint(constraint1)
-////            name1.superview?.addConstraint(constraint2)
-////            name1.superview?.addConstraint(constraint3)
-//            
-            //Username row
-            //cell = (tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as CustomTableViewCell)
-            let cell = (tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as CustomTableViewCell)
-            cell.label1.text = "Email       "
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as CustomTableViewCell
+            switch indexPath.row {
+            case 0:
+                cell.label1?.text = "Name        "
+                self.name = cell.textField1
+            case 1:
+                cell.label1?.text = "Email         "
+                self.email = cell.textField1
+                cell.textField1.keyboardType = UIKeyboardType.EmailAddress
+            case 2:
+                cell.label1.text = "Profession "
+                self.profession = cell.textField1
+            case 3:
+                cell.label1.text = "Talents         "
+                self.talents = cell.textField1
+            case 4:
+                cell.label1.text = "Phone Number"
+                if UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone {
+                    cell.textField1.keyboardType = UIKeyboardType.PhonePad
+                }
+                self.phone = cell.textField1
+            case 5:
+                cell.label1.text = "Password       "
+                cell.textField1.secureTextEntry = true
+                self.password = cell.textField1
+            default:
+                break
+            }
             cell.textField1.delegate = self
-            cell.textField1.keyboardType = UIKeyboardType.EmailAddress
-            username = cell.textField1
-            return cell
-        } else if indexPath.section == 0 && indexPath.row == 1 {
-            let cell = (tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as CustomTableViewCell)
-            cell.label1.text = "Password"
-            cell.textField1.secureTextEntry = true;
-            cell.textField1.delegate = self;
-            password = cell.textField1
-            return cell
-            //Password row
-        } else if indexPath.section == 1 && indexPath.row == 0{
-            //Submit row
-            let cell = tableView.dequeueReusableCellWithIdentifier("submit", forIndexPath:indexPath) as UITableViewCell
-            cell.textLabel?.text = "Login"
-            
             return cell
         } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("submit", forIndexPath: indexPath) as UITableViewCell
-            cell.textLabel?.text = "Sign Up"
+            let cell = tableView.dequeueReusableCellWithIdentifier("signup", forIndexPath: indexPath) as UITableViewCell
             return cell
-            
         }
-        
-        //cell.textLabel?.text="hello"
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 1  && indexPath.row == 0{
@@ -114,22 +100,22 @@ class LoginViewController: UITableViewController, UITextFieldDelegate{
                     //self.UIID.text = uuid as String?
                     
                 })
-                let userInfo = NSDictionary(objectsAndKeys: self.username.text,"email",self.password.text,"password")
+                
+                
+                let talent = self.talents.text.componentsSeparatedByString(",")
+                let userInfo = NSDictionary(objectsAndKeys: self.name.text,"name",self.email.text,"email",self.profession.text, "profession",talent,"talents",self.password.text,"pass",self.phone.text,"phone")
                 println(userInfo)
                 
                 
-                self.socket.emit("login", args: [userInfo])
+                self.socket.emit("register", args: [userInfo])
                 self.socket.on("response", callback: { (args:[AnyObject]!)  in
                     let arg = args as SIOParameterArray
-                    //println(arg.firstObject!)
+                    println(arg.firstObject!)
                     let dict = arg[0] as NSDictionary
                     if  dict["code"] as Int != 200 {
                         let alert = UIAlertView(title: "Incorrect email or password", message: "Incorrect email or password, please check your input", delegate: nil, cancelButtonTitle: "OK")
                         alert.show()
                     } else {
-                        let defaults = NSUserDefaults.standardUserDefaults()
-                        //println("token is " + (dict["token"] as String))
-                        defaults.setValue(dict["data"], forKey: "token")
                         self.dismissViewControllerAnimated(true, completion: nil)
                     }
                     
@@ -139,11 +125,13 @@ class LoginViewController: UITableViewController, UITextFieldDelegate{
                     //self.tableView.reloadData()
                 })
             })
-        } else if indexPath.section == 1 {
-            self.performSegueWithIdentifier("showSignup", sender: self)
+        } else {
+            
         }
         
     }
+    
+    
 
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
