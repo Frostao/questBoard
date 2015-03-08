@@ -10,7 +10,6 @@
 		6633375F1AAA91F60068C97B /* libPods-SIOSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6633375E1AAA91F60068C97B /* libPods-SIOSocket.a */; };
 		66D00FAB1AAAAE78004FADF2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D00FAA1AAAAE78004FADF2 /* LoginViewController.swift */; };
 		66D00FAD1AAAAF37004FADF2 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D00FAC1AAAAF37004FADF2 /* LocationViewController.swift */; };
-		66D00FB51AAAB1F1004FADF2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D00FB41AAAB1F1004FADF2 /* ProfileViewController.swift */; };
 		BFD39F8DED05BBF59DE66ECC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CCA1A05EE7112645865E440 /* libPods.a */; };
 		C04B23D01AAA829C002D42D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04B23CF1AAA829C002D42D8 /* AppDelegate.swift */; };
 		C04B23D21AAA829C002D42D8 /* JobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04B23D11AAA829C002D42D8 /* JobViewController.swift */; };
@@ -23,6 +22,7 @@
 		C06D4C4D1AABE6D00034230D /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06D4C4C1AABE6D00034230D /* AddViewController.swift */; };
 		C06D4C4F1AABE6DA0034230D /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06D4C4E1AABE6DA0034230D /* CustomTableViewCell.swift */; };
 		C06D4C511AABE6EA0034230D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06D4C501AABE6EA0034230D /* SignUpViewController.swift */; };
+		C06D4C531AABEBFC0034230D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06D4C521AABEBFC0034230D /* ProfileViewController.swift */; };
 		C0F25D0C1AAABEDF001FC757 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0F25D0B1AAABEDF001FC757 /* MapKit.framework */; };
 		C0F25D0E1AAABEEB001FC757 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0F25D0D1AAABEEB001FC757 /* CoreLocation.framework */; };
 		C0F25D121AAADD66001FC757 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F25D111AAADD66001FC757 /* Job.swift */; };
@@ -44,7 +44,6 @@
 		6633375E1AAA91F60068C97B /* libPods-SIOSocket.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-SIOSocket.a"; path = "Pods/build/Debug-iphoneos/libPods-SIOSocket.a"; sourceTree = "<group>"; };
 		66D00FAA1AAAAE78004FADF2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		66D00FAC1AAAAF37004FADF2 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
-		66D00FB41AAAB1F1004FADF2 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		84B94F40AF996EEE5468B21C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C04B23CA1AAA829C002D42D8 /* JobSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JobSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C04B23CE1AAA829C002D42D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -62,6 +61,7 @@
 		C06D4C4C1AABE6D00034230D /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		C06D4C4E1AABE6DA0034230D /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		C06D4C501AABE6EA0034230D /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		C06D4C521AABEBFC0034230D /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C0F25D0B1AAABEDF001FC757 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C0F25D0D1AAABEEB001FC757 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C0F25D111AAADD66001FC757 /* Job.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 		66D00FB71AAAB345004FADF2 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				66D00FB41AAAB1F1004FADF2 /* ProfileViewController.swift */,
+				C06D4C521AABEBFC0034230D /* ProfileViewController.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -161,8 +161,6 @@
 				66D00FB71AAAB345004FADF2 /* Profile */,
 				66D00FAC1AAAAF37004FADF2 /* LocationViewController.swift */,
 				C0F25D111AAADD66001FC757 /* Job.swift */,
-				C064FBDB1AAB838A008B3848 /* Images.xcassets */,
-				C04B23D81AAA829C002D42D8 /* LaunchScreen.xib */,
 				C04B23CD1AAA829C002D42D8 /* Supporting Files */,
 			);
 			path = JobSearch;
@@ -171,6 +169,8 @@
 		C04B23CD1AAA829C002D42D8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C064FBDB1AAB838A008B3848 /* Images.xcassets */,
+				C04B23D81AAA829C002D42D8 /* LaunchScreen.xib */,
 				C04B23CE1AAA829C002D42D8 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -334,7 +334,7 @@
 				C06D4C4D1AABE6D00034230D /* AddViewController.swift in Sources */,
 				C0F25D121AAADD66001FC757 /* Job.swift in Sources */,
 				C04B23D01AAA829C002D42D8 /* AppDelegate.swift in Sources */,
-				66D00FB51AAAB1F1004FADF2 /* ProfileViewController.swift in Sources */,
+				C06D4C531AABEBFC0034230D /* ProfileViewController.swift in Sources */,
 				C06D4C4F1AABE6DA0034230D /* CustomTableViewCell.swift in Sources */,
 				C064FBD91AAB550F008B3848 /* JobDetailViewController.swift in Sources */,
 				66D00FAD1AAAAF37004FADF2 /* LocationViewController.swift in Sources */,
