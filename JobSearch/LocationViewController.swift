@@ -17,6 +17,7 @@ class LocationViewController: UIViewController,CLLocationManagerDelegate,MKMapVi
     let locationManager = CLLocationManager()
     
     var jobArray:[Job] = []
+    var currentJob:Job?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +44,7 @@ class LocationViewController: UIViewController,CLLocationManagerDelegate,MKMapVi
             let annotation = MKPointAnnotation()
             annotation.title = job.title
             annotation.subtitle = job.salary
-            annotation.coordinate = CLLocationCoordinate2DMake(job.longitude, job.latitude)
+            annotation.coordinate = CLLocationCoordinate2DMake(job.latitude, job.longitude)
             mapView.addAnnotation(annotation)
             
         }
@@ -80,14 +81,24 @@ class LocationViewController: UIViewController,CLLocationManagerDelegate,MKMapVi
         }
         return pinAnnotation
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    
+    
+    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
+        for job in jobArray {
+            if job.title == view.annotation.title {
+                self.currentJob = job
+                self.performSegueWithIdentifier("transformToJobDetail", sender: self)
+            }
+        }
     }
-    */
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "transformToJobDetail" {
+            let viewController = segue.destinationViewController as JobDetailViewController
+            viewController.currentJob = currentJob
+        }
+        
+    }
 
 }

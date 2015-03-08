@@ -13,16 +13,22 @@ class Job:NSObject{
     var latitude : Double
     var salary : String
     var title : String
+    var detail : String
+    var date:String
+    var expireDate:String
+    var jobID : String
+    var tags :NSArray
     
     
-    
-    
-    
-    init(longitude:Double,latitude:Double,salary:String,title:String){
+    init(longitude:Double,latitude:Double,salary:String,title:String,detail:String,date:String,expireDate:String,jobID:String,tags:NSArray){
         self.longitude = longitude
         self.latitude = latitude
         self.salary = salary
         self.title = title
-        
+        self.detail = detail
+        self.date = date
+        self.expireDate = expireDate
+        self.jobID = jobID
+        self.tags = tags
     }
 }
