@@ -49,16 +49,16 @@ class JobViewController: UITableViewController,CLLocationManagerDelegate {
             let long = self.location.longitude
             let geo = NSDictionary(objectsAndKeys: "Point", "type", [long,lati], "coordinates")
             let dict = NSDictionary(objectsAndKeys: 30000, "maxDist",geo,"location")
-            println(dict)
+            //println(dict)
             self.socket.emit("geosearch", args: [dict])
             self.socket.on("response", callback: { (args:[AnyObject]!)  in
                 let arg = args as SIOParameterArray
                 //println(arg.firstObject!)
                 let dict = arg[0] as NSDictionary
-                println(dict)
+                //println(dict)
                 let data: NSArray = dict["data"] as NSArray//get data
                 for entryDict in data{
-                    //println(entryDict)
+                    println(entryDict)
                     
                     //location && coordinate
                     let location:NSDictionary = entryDict.objectForKey("location") as NSDictionary
@@ -90,10 +90,10 @@ class JobViewController: UITableViewController,CLLocationManagerDelegate {
                     
                     let tags:NSArray = entryDict.objectForKey("tags") as NSArray
                     
+                    let uuid = entryDict.objectForKey("uuid") as String
                     
                     
-                    
-                    let job = Job(longitude: coordinate[0] as Double, latitude: coordinate[1] as Double,salary:salary,title:title,detail:description,date:dateResult,expireDate:expireDateResult,jobID:id,tags:tags)
+                    let job = Job(longitude: coordinate[0] as Double, latitude: coordinate[1] as Double,salary:salary,title:title,detail:description,date:dateResult,expireDate:expireDateResult,jobID:id,tags:tags,UUID:uuid,postID:hay)
                     self.jobArray.append(job)
                     
                 }

@@ -18,9 +18,10 @@ class Job:NSObject{
     var expireDate:String
     var jobID : String
     var tags :NSArray
+    var UUID : String
+    var postID : String
     
-    
-    init(longitude:Double,latitude:Double,salary:String,title:String,detail:String,date:String,expireDate:String,jobID:String,tags:NSArray){
+    init(longitude:Double,latitude:Double,salary:String,title:String,detail:String,date:String,expireDate:String,jobID:String,tags:NSArray,UUID:String,postID:String){
         self.longitude = longitude
         self.latitude = latitude
         self.salary = salary
@@ -30,5 +31,7 @@ class Job:NSObject{
         self.expireDate = expireDate
         self.jobID = jobID
         self.tags = tags
+        self.UUID = UUID
+        self.postID = postID
     }
 }

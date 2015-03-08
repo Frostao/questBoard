@@ -45,7 +45,7 @@
 		66D00FAA1AAAAE78004FADF2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		66D00FAC1AAAAF37004FADF2 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		84B94F40AF996EEE5468B21C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		C04B23CA1AAA829C002D42D8 /* JobSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JobSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C04B23CA1AAA829C002D42D8 /* QuestBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuestBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C04B23CE1AAA829C002D42D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C04B23CF1AAA829C002D42D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C04B23D11AAA829C002D42D8 /* JobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobViewController.swift; sourceTree = "<group>"; };
@@ -141,7 +141,7 @@
 		C04B23CB1AAA829C002D42D8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C04B23CA1AAA829C002D42D8 /* JobSearch.app */,
+				C04B23CA1AAA829C002D42D8 /* QuestBoard.app */,
 				C04B23DF1AAA829C002D42D8 /* JobSearchTests.xctest */,
 			);
 			name = Products;
@@ -212,7 +212,7 @@
 			);
 			name = JobSearch;
 			productName = JobSearch;
-			productReference = C04B23CA1AAA829C002D42D8 /* JobSearch.app */;
+			productReference = C04B23CA1AAA829C002D42D8 /* QuestBoard.app */;
 			productType = "com.apple.product-type.application";
 		};
 		C04B23DE1AAA829C002D42D8 /* JobSearchTests */ = {
@@ -472,7 +472,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = QuestBoard;
 				SWIFT_OBJC_BRIDGING_HEADER = JobSearch/Header.h;
 			};
 			name = Debug;
@@ -490,7 +490,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = QuestBoard;
 				SWIFT_OBJC_BRIDGING_HEADER = JobSearch/Header.h;
 			};
 			name = Release;

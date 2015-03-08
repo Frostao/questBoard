@@ -11,19 +11,57 @@ import MapKit
 
 class JobDetailViewController: UIViewController,UIAlertViewDelegate {
 
-
-    
+    var currentJob:Job?
+    var socket = SIOSocket()
+    var phoneNumber : String?
+    var email : String?
     @IBOutlet weak var endDate: UILabel!
     @IBOutlet weak var apply: UIButton!
     @IBAction func apply(sender: UIButton) {
-        let alertController = UIAlertController(title: "Congratulations", message: "You have successfully added this job to your account", preferredStyle: .Alert)
-        
-        let oneAction = UIAlertAction(title: "OK", style: .Default) { (_) in
-            //call API to add this job to my account
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let token:String = defaults.valueForKey("token") as? String {
+            SIOSocket.socketWithHost("http://nerved.herokuapp.com", response: { (socket:SIOSocket!) in
+                self.socket = socket;
+                let dict = NSDictionary(objectsAndKeys: token,"token",self.currentJob!.postID,"postid")
+                self.socket.emit("accept", args: [dict])
+                self.socket.on("response", callback: { (args:[AnyObject]!)  in
+                    let arg = args as SIOParameterArray
+                    let dict = arg[0] as NSDictionary
+                    println(dict)
+                    
+                })
+            })
+            
+            
+            let alertController = UIAlertController(title: "Publisher's Contact", message: nil, preferredStyle: .Alert)
+            
+            let oneAction = UIAlertAction(title: "Phone:\(phoneNumber!)", style: .Default) { (_) in
+                //call API to add this job to my account
+                
+                
+            }
+            let twoAction = UIAlertAction(title: "Email: \(email!)", style: .Default) {(_) in
+                
+            }
+            let ok = UIAlertAction(title: "OK", style: .Default) { (_) in
+                
+                
+            }
+            alertController.addAction(oneAction)
+            alertController.addAction(twoAction)
+            alertController.addAction(ok)
+            self.presentViewController(alertController, animated: true, completion: nil)
+            
+            self.apply.backgroundColor = UIColor(red: 81/255.0, green: 193/255.0, blue: 183/255.0, alpha: 1)
+            self.apply.tintColor = UIColor(red: 245, green: 146, blue: 108, alpha: 1)
+            self.apply.setTitle("Show Publisher's Contact",
+                forState: UIControlState.Normal)
+            
+        } else {
+            self.performSegueWithIdentifier("showLogin", sender: self)
             
         }
-        alertController.addAction(oneAction)
-        self.presentViewController(alertController, animated: true, completion: nil)
+        
     }
     @IBOutlet weak var salary: UILabel!
     @IBOutlet weak var jobDescription: UILabel!
@@ -32,9 +70,21 @@ class JobDetailViewController: UIViewController,UIAlertViewDelegate {
     @IBOutlet weak var jobTitle: UILabel!
     @IBOutlet weak var map: MKMapView!
     
-    var currentJob:Job?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        SIOSocket.socketWithHost("http://nerved.herokuapp.com", response: { (socket:SIOSocket!) in
+            self.socket = socket;
+            let dict = NSDictionary(objectsAndKeys: self.currentJob!.UUID,"uuid")
+            self.socket.emit("uuid2phone", args: [dict])
+            self.socket.on("response", callback: { (args:[AnyObject]!)  in
+                let arg = args as SIOParameterArray
+                let dict = arg[0] as NSDictionary
+                self.email = dict.objectForKey("data")![0] as? String
+                self.phoneNumber = dict.objectForKey("data")![1] as? String
+                
+            })
+        })
         salary.textColor = UIColor(red: 245.0/255, green: 146.0/255, blue: 108.0/255, alpha: 1)
         self.apply.backgroundColor = UIColor(red: 245.0/255, green: 146.0/255, blue: 108.0/255, alpha: 1)
         self.apply.tintColor = UIColor(red: 245, green: 146, blue: 108, alpha: 1)
