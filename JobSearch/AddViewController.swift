@@ -19,15 +19,22 @@ class AddViewController: UITableViewController,UITextFieldDelegate , CLLocationM
     var duration = UITextField()
     var pay = UITextField()
     var skills = UITextField()
-    var location:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+    var location:CLLocationCoordinate2D?
+    let locationManager = CLLocationManager()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let locationManager = CLLocationManager()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor(red: 245, green: 146, blue: 108, alpha: 1)]
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 245.0/255, green: 146.0/255, blue: 108.0/255, alpha: 1)
+        self.navigationController?.navigationBar.tintColor = UIColor(red: 245, green: 146, blue: 108, alpha: 1)
+
+        locationManager.delegate = self
         if CLLocationManager.authorizationStatus() != CLAuthorizationStatus.AuthorizedWhenInUse{
             locationManager.requestWhenInUseAuthorization()
         } else {
-            locationManager.delegate = self
+            
             locationManager.startUpdatingLocation()
             
             
@@ -127,12 +134,16 @@ class AddViewController: UITableViewController,UITextFieldDelegate , CLLocationM
                 let token = defaults.valueForKey("token") as String
                 println(token)
                 let skills = self.skills.text.componentsSeparatedByString(",")
+                if let theLocation = self.location {
+                    let location = NSDictionary(objectsAndKeys: NSDictionary(objectsAndKeys: "Point","type",[theLocation.longitude, theLocation.latitude],"coordinates"),"location")
                 
-                let location = NSDictionary(objectsAndKeys: NSDictionary(objectsAndKeys: "Point","type",[self.location.longitude, self.location.latitude],"coordinates"),"location")
                 //println(location)
-                let userInfo = NSDictionary(objectsAndKeys: self.jobTitle.text,"title",self.jobDescription.text,"description",self.remarks.text, "remarks",skills,"skills",(self.pay.text as NSString).doubleValue,"comp",(self.duration.text as NSString).doubleValue,"duration",token,"token",location["location"]!,"location")
-                self.socket.emit("post", args: [userInfo])
-
+                    let userInfo = NSDictionary(objectsAndKeys: self.jobTitle.text,"title",self.jobDescription.text,"description",self.remarks.text, "remarks",skills,"skills",self.pay.text,"comp",(self.duration.text as NSString).doubleValue,"duration",token,"token",location["location"]!,"location")
+                    self.socket.emit("post", args: [userInfo])
+                } else {
+                    let error = UIAlertView(title: "No location Found", message: "Please enable your location in privacy settings", delegate: self, cancelButtonTitle: "OK")
+                    error.show()
+                }
                 self.socket.on("response", callback: { (args:[AnyObject]!)  in
                     let arg = args as SIOParameterArray
                     println(arg.firstObject!)
@@ -141,7 +152,9 @@ class AddViewController: UITableViewController,UITextFieldDelegate , CLLocationM
                         let alert = UIAlertView(title: "Incorrect email or password", message: "Incorrect email or password, please check your input", delegate: nil, cancelButtonTitle: "OK")
                         alert.show()
                     } else {
+                        NSNotificationCenter.defaultCenter().postNotificationName("addedJob", object: nil)
                         self.dismissViewControllerAnimated(true, completion: nil)
+                        
                     }
                     
                     //let code: AnyObject? = dict["message"]
@@ -154,6 +167,10 @@ class AddViewController: UITableViewController,UITextFieldDelegate , CLLocationM
             
         }
         
+    }
+    
+    func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        locationManager.startUpdatingLocation()
     }
     
     

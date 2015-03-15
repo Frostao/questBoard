@@ -20,6 +20,10 @@ class LoginViewController: UITableViewController, UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Login"
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor(red: 245, green: 146, blue: 108, alpha: 1)]
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 245.0/255, green: 146.0/255, blue: 108.0/255, alpha: 1)
+        self.navigationController?.navigationBar.tintColor = UIColor(red: 245, green: 146, blue: 108, alpha: 1)
+
         
     }
     
@@ -43,13 +47,15 @@ class LoginViewController: UITableViewController, UITextFieldDelegate{
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        
+        if section == 0 {
+            return 3
+        }
         return 2
         
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        if indexPath.section == 0 && indexPath.row == 0 {
+        if indexPath.section == 0 && indexPath.row == 1 {
 //            let name1:UILabel = UILabel()
 //            let username:UITextField = UITextField()
 //            
@@ -79,7 +85,7 @@ class LoginViewController: UITableViewController, UITextFieldDelegate{
             cell.textField1.keyboardType = UIKeyboardType.EmailAddress
             username = cell.textField1
             return cell
-        } else if indexPath.section == 0 && indexPath.row == 1 {
+        } else if indexPath.section == 0 && indexPath.row == 2 {
             let cell = (tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as CustomTableViewCell)
             cell.label1.text = "Password"
             cell.textField1.secureTextEntry = true;
@@ -87,6 +93,11 @@ class LoginViewController: UITableViewController, UITextFieldDelegate{
             password = cell.textField1
             return cell
             //Password row
+        } else if indexPath.section == 0 && indexPath.row == 0 {
+            let cell = (tableView.dequeueReusableCellWithIdentifier("image",forIndexPath: indexPath) as CustomTableViewCell)
+            cell.imageView1.image = UIImage(named: "Group")
+            cell.backgroundColor = UIColor.clearColor()
+            return cell
         } else if indexPath.section == 1 && indexPath.row == 0{
             //Submit row
             let cell = tableView.dequeueReusableCellWithIdentifier("submit", forIndexPath:indexPath) as UITableViewCell
@@ -130,6 +141,7 @@ class LoginViewController: UITableViewController, UITextFieldDelegate{
                         let defaults = NSUserDefaults.standardUserDefaults()
                         //println("token is " + (dict["token"] as String))
                         defaults.setValue(dict["data"], forKey: "token")
+                        NSNotificationCenter.defaultCenter().postNotificationName("loggedin", object: nil)
                         self.dismissViewControllerAnimated(true, completion: nil)
                     }
                     
@@ -144,7 +156,14 @@ class LoginViewController: UITableViewController, UITextFieldDelegate{
         }
         
     }
-
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.section == 0 && indexPath.row == 0 {
+            return 200
+        } else {
+            return 40
+        }
+    }
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
