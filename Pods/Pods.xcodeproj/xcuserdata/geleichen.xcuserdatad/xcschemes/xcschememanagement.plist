@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-QTree-objc.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-SIOSocket.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>8B93F1C9D460F48E2AB8CCAA</key>
+		<key>39307E5C0F5A041AF669D4CC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>92EF9E8F91A7923F600CDD02</key>
+		<key>55AD2847EAC0A795289A6863</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FAB3F1EF545A93D610D99A28</key>
 		<dict>
 			<key>primary</key>
 			<true/>

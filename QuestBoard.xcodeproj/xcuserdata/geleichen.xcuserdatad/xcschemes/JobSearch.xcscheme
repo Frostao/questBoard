@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C04B23C91AAA829C002D42D8"
-            BuildableName = "JobSearch.app"
-            BlueprintName = "JobSearch"
-            ReferencedContainer = "container:JobSearch.xcodeproj">
+            BuildableName = "QuestBoard.app"
+            BlueprintName = "QuestBoard"
+            ReferencedContainer = "container:QuestBoard.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -77,9 +77,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C04B23C91AAA829C002D42D8"
-            BuildableName = "JobSearch.app"
-            BlueprintName = "JobSearch"
-            ReferencedContainer = "container:JobSearch.xcodeproj">
+            BuildableName = "QuestBoard.app"
+            BlueprintName = "QuestBoard"
+            ReferencedContainer = "container:QuestBoard.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>

@@ -17,14 +17,13 @@ class LocationViewController: UIViewController,CLLocationManagerDelegate,MKMapVi
     let locationManager = CLLocationManager()
     
     var jobArray:[Job] = []
-<<<<<<< HEAD
-=======
     var currentJob:Job?
->>>>>>> branch3
+    var qTree = QTree()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         if CLLocationManager.locationServicesEnabled() {
             self.locationManager.requestWhenInUseAuthorization()
         }
@@ -44,17 +43,12 @@ class LocationViewController: UIViewController,CLLocationManagerDelegate,MKMapVi
         self.view.addSubview(button)
         
         for job in jobArray {
-            let annotation = MKPointAnnotation()
-            annotation.title = job.title
-            annotation.subtitle = job.salary
-<<<<<<< HEAD
-            annotation.coordinate = CLLocationCoordinate2DMake(job.longitude, job.latitude)
-=======
-            annotation.coordinate = CLLocationCoordinate2DMake(job.latitude, job.longitude)
->>>>>>> branch3
-            mapView.addAnnotation(annotation)
+            let annotation = JobAnnotation(coordinate: CLLocationCoordinate2DMake(job.latitude, job.longitude), title: job.title,subtitle:job.salary)
+            self.qTree.insertObject(annotation)
             
+            //self.mapView.addAnnotation(annotation)
         }
+        self.reloadAnnotations()
         
         
         // Do any additional setup after loading the view.
@@ -76,37 +70,52 @@ class LocationViewController: UIViewController,CLLocationManagerDelegate,MKMapVi
     
     
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
-        var pinAnnotation: MKPinAnnotationView?
-        if annotation.isKindOfClass(MKPointAnnotation.classForCoder()) {
+        if annotation.isKindOfClass(QCluster.classForCoder()) {
             let PinIdentifier = "PinIdentifier"
-            pinAnnotation = mapView.dequeueReusableAnnotationViewWithIdentifier(PinIdentifier) as? MKPinAnnotationView
-            if pinAnnotation == nil {
-                pinAnnotation = MKPinAnnotationView(annotation: annotation, reuseIdentifier: PinIdentifier)
+            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(ClusterAnnotationView.reuseId()) as? ClusterAnnotationView
+            if annotationView == nil {
+                annotationView = ClusterAnnotationView(cluster: annotation)
             }
-            pinAnnotation?.canShowCallout = true
-            pinAnnotation?.rightCalloutAccessoryView = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as UIButton
+            annotationView!.canShowCallout = true
+            annotationView!.rightCalloutAccessoryView = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as UIButton
+            annotationView!.cluster = annotation
+            return annotationView
         }
-        return pinAnnotation
+        return nil
     }
-<<<<<<< HEAD
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-=======
-    
-    
-    
-    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
+   
+    func mapView(mapView: MKMapView!, didSelectAnnotationView view: MKAnnotationView!) {
         for job in jobArray {
-            if job.title == view.annotation.title {
+            if job.title == (view.annotation as JobAnnotation).title {
                 self.currentJob = job
                 self.performSegueWithIdentifier("transformToJobDetail", sender: self)
             }
         }
     }
     
->>>>>>> branch3
+    func reloadAnnotations(){
+        if self.isViewLoaded() == false {
+            return
+        }
+        let mapRegion = self.mapView.region
+        let minNonClusteredSpan = min(mapRegion.span.latitudeDelta, mapRegion.span.longitudeDelta) / 5
+        let objects = self.qTree.getObjectsInRegion(mapRegion, minNonClusteredSpan: minNonClusteredSpan) as NSArray
+        let annotationsToRemove = (self.mapView.annotations as NSArray).mutableCopy() as NSMutableArray
+        annotationsToRemove.removeObject(self.mapView.userLocation)
+        annotationsToRemove.removeObjectsInArray(objects)
+        self.mapView.removeAnnotations(annotationsToRemove)
+        let annotationsToAdd = objects.mutableCopy() as NSMutableArray
+        annotationsToAdd.removeObjectsInArray(self.mapView.annotations)
+        
+        self.mapView.addAnnotations(annotationsToAdd)
+
+
+    }
+    func mapView(mapView: MKMapView!, regionDidChangeAnimated animated: Bool) {
+        self.reloadAnnotations()
+    }
+  
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "transformToJobDetail" {
             let viewController = segue.destinationViewController as JobDetailViewController

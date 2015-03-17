@@ -7,3 +7,6 @@
 //
 
 #import <SIOSocket/SIOSocket.h>
+#import "QTree.h"
+#import "QCluster.h"
+#import "ClusterAnnotationView.h"

@@ -143,15 +143,6 @@ class JobDetailViewController: UIViewController,UIAlertViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-<<<<<<< HEAD
-        self.title? = "JobDetail"
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-=======
         self.delete.backgroundColor = UIColor(red: 255/255.0, green: 110/255.0, blue: 128/255.0, alpha: 1)
         self.delete.tintColor = UIColor(red: 245, green: 146, blue: 108, alpha: 1)
         SIOSocket.socketWithHost("http://nerved.herokuapp.com", response: { (socket:SIOSocket!) in
@@ -183,7 +174,6 @@ class JobDetailViewController: UIViewController,UIAlertViewDelegate {
         self.endDate.text = currentJob!.expireDate
         self.jobID.text = "Job ID :\(currentJob!.jobID)"
         // Do any additional setup after loading the view.
->>>>>>> branch3
     }
     
     override func didReceiveMemoryWarning() {

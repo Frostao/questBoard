@@ -6,6 +6,12 @@
 // project.
 
 
+// QTree-objc
+#define COCOAPODS_POD_AVAILABLE_QTree_objc
+#define COCOAPODS_VERSION_MAJOR_QTree_objc 0
+#define COCOAPODS_VERSION_MINOR_QTree_objc 0
+#define COCOAPODS_VERSION_PATCH_QTree_objc 2
+
 // SIOSocket
 #define COCOAPODS_POD_AVAILABLE_SIOSocket
 #define COCOAPODS_VERSION_MAJOR_SIOSocket 0
