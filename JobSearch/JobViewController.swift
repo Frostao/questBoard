@@ -243,7 +243,7 @@ class JobViewController: UITableViewController,CLLocationManagerDelegate,UISearc
                 
             } else {
                 if self.serverFilteredJobArray.count != 0 {
-                    return "All the Quest on the server"
+                    return "All the Quest"
                 }
             }
         } else {
@@ -294,12 +294,13 @@ class JobViewController: UITableViewController,CLLocationManagerDelegate,UISearc
 
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         if let currentLocation = locations {
+            
             if location == nil {
-                let thisLocation : CLLocation = currentLocation[0] as CLLocation
-                location = thisLocation.coordinate
                 getDataFromServer()
                 //self.tableView.reloadData()
-            } 
+            }
+            let thisLocation : CLLocation = currentLocation[0] as CLLocation
+            location = thisLocation.coordinate
         }
     }
     

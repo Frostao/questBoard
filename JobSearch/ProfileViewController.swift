@@ -206,7 +206,8 @@ class ProfileViewController: UIViewController,UITableViewDelegate,UITableViewDat
                             self.jobArray.append(job)
                             
                         }
-                        
+                        //println(self.jobArray[0].title)
+                        println(dict)
                         self.performSegueWithIdentifier("toAccpted", sender: self)
                         
                     })
