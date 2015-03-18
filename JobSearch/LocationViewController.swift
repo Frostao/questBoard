@@ -19,6 +19,7 @@ class LocationViewController: UIViewController,CLLocationManagerDelegate,MKMapVi
     var jobArray:[Job] = []
     var currentJob:Job?
     var qTree = QTree()
+    var myLocation : CLLocationCoordinate2D?
     
     
     override func viewDidLoad() {
@@ -28,7 +29,8 @@ class LocationViewController: UIViewController,CLLocationManagerDelegate,MKMapVi
             self.locationManager.requestWhenInUseAuthorization()
         }
         
-        mapView.setRegion(MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2DMake(40.426102, -86.9096881), 5000, 5000), animated: true)
+        let zoomRegion = MKCoordinateRegionMakeWithDistance(myLocation!,5000,5000)
+        self.mapView.setRegion(zoomRegion, animated: true)
         mapView.showsUserLocation = true
         mapView.delegate = self
         

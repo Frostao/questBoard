@@ -199,6 +199,7 @@ class JobViewController: UITableViewController,CLLocationManagerDelegate {
         if segue.identifier == "toMap" {
             let viewController = segue.destinationViewController as LocationViewController
             viewController.jobArray = self.jobArray
+            viewController.myLocation = self.location
         } else if segue.identifier == "toJobDetail" {
             let viewController = segue.destinationViewController as JobDetailViewController
             viewController.currentJob = self.currentJob

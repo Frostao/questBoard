@@ -116,6 +116,7 @@
 		66D00FB71AAAB345004FADF2 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				668078EA1AAC9EE500A14C8B /* MyAcceptedTableViewController.swift */,
 				66D00FB41AAAB1F1004FADF2 /* ProfileViewController.swift */,
 			);
 			name = Profile;
@@ -132,6 +133,34 @@
 				1CCA1A05EE7112645865E440 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C035D1931AB9B8C500969460 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				66D00FAC1AAAAF37004FADF2 /* LocationViewController.swift */,
+				C0DE612A1AB7C658002C5A86 /* JobAnnotation.swift */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		C035D1941AB9B8E500969460 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				C0F25D111AAADD66001FC757 /* Job.swift */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		C035D1951AB9B8F100969460 /* Login & SingUp */ = {
+			isa = PBXGroup;
+			children = (
+				66D00FAA1AAAAE78004FADF2 /* LoginViewController.swift */,
+				C06D4C501AABE6EA0034230D /* SignUpViewController.swift */,
+				C06D4C4E1AABE6DA0034230D /* CustomTableViewCell.swift */,
+				C06D4C4C1AABE6D00034230D /* AddViewController.swift */,
+			);
+			name = "Login & SingUp";
 			sourceTree = "<group>";
 		};
 		C04B23C11AAA829C002D42D8 = {
@@ -157,18 +186,11 @@
 		C04B23CC1AAA829C002D42D8 /* QuestBoard */ = {
 			isa = PBXGroup;
 			children = (
+				C035D1951AB9B8F100969460 /* Login & SingUp */,
+				C035D1941AB9B8E500969460 /* Helper */,
 				66D00FB61AAAB330004FADF2 /* JobTab */,
-				66D00FAA1AAAAE78004FADF2 /* LoginViewController.swift */,
-				C06D4C501AABE6EA0034230D /* SignUpViewController.swift */,
-				C06D4C4E1AABE6DA0034230D /* CustomTableViewCell.swift */,
-				C06D4C4C1AABE6D00034230D /* AddViewController.swift */,
-				668078EA1AAC9EE500A14C8B /* MyAcceptedTableViewController.swift */,
+				C035D1931AB9B8C500969460 /* Map */,
 				66D00FB71AAAB345004FADF2 /* Profile */,
-				66D00FAC1AAAAF37004FADF2 /* LocationViewController.swift */,
-				C0DE612A1AB7C658002C5A86 /* JobAnnotation.swift */,
-				C0F25D111AAADD66001FC757 /* Job.swift */,
-				C064FBDB1AAB838A008B3848 /* Images.xcassets */,
-				C04B23D81AAA829C002D42D8 /* LaunchScreen.xib */,
 				C04B23CD1AAA829C002D42D8 /* Supporting Files */,
 			);
 			name = QuestBoard;
@@ -178,6 +200,8 @@
 		C04B23CD1AAA829C002D42D8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C04B23D81AAA829C002D42D8 /* LaunchScreen.xib */,
+				C064FBDB1AAB838A008B3848 /* Images.xcassets */,
 				C04B23CF1AAA829C002D42D8 /* AppDelegate.swift */,
 				C04B23D31AAA829C002D42D8 /* Main.storyboard */,
 				C04B23EF1AAA837C002D42D8 /* Header.h */,
