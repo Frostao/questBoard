@@ -267,7 +267,7 @@ class JobViewController: UITableViewController,CLLocationManagerDelegate,UISearc
             currentJob = self.jobArray[indexPath.row]
             self.performSegueWithIdentifier("toJobDetail", sender: self)
         }
-        
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
     }
     
     
