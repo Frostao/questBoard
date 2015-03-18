@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class JobViewController: UITableViewController,CLLocationManagerDelegate {
+class JobViewController: UITableViewController,CLLocationManagerDelegate,UISearchResultsUpdating {
     @IBAction func addJob(sender: AnyObject) {
         let defaults = NSUserDefaults.standardUserDefaults()
         if let token:String = defaults.valueForKey("token") as? String {
@@ -25,16 +25,27 @@ class JobViewController: UITableViewController,CLLocationManagerDelegate {
     
     
     
-    
+    var filteredJobArray : [Job] = []
     let locationManager = CLLocationManager()
     var socket = SIOSocket()
     var jobArray:[Job] = []
     var currentJob:Job?
     var location:CLLocationCoordinate2D?
+    var resultSeachController = UISearchController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.resultSeachController = ({
+            let controller = UISearchController(searchResultsController: nil)
+            controller.searchResultsUpdater = self
+            controller.dimsBackgroundDuringPresentation = false
+            controller.searchBar.sizeToFit()
+            
+            self.tableView.tableHeaderView = controller.searchBar
+            
+            return controller
+        })()
     
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.addTarget(self, action: "getDataFromServer", forControlEvents: UIControlEvents.ValueChanged)
@@ -66,7 +77,7 @@ class JobViewController: UITableViewController,CLLocationManagerDelegate {
         self.tabBarController?.tabBar.tintColor = UIColor(red: 245.0/255, green: 146.0/255, blue: 108.0/255, alpha: 1)
         self.tabBarController?.tabBar.barTintColor = UIColor(red: 245, green: 146, blue: 108, alpha: 1)
         
-       
+       self.tableView.reloadData()
     }
     
     func didAddjob(notification: NSNotification) {
@@ -166,21 +177,42 @@ class JobViewController: UITableViewController,CLLocationManagerDelegate {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.jobArray.count
+        if self.resultSeachController.active {
+            return self.filteredJobArray.count
+        } else {
+            return self.jobArray.count
+        }
+        
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("cell") as? JobTableViewCell
-        let value = jobArray[indexPath.row]
-        cell?.salary.text = value.salary
-        cell?.salary.textColor = UIColor(red: 245.0/255, green: 146.0/255, blue: 108.0/255, alpha: 1)
-        cell?.title.text = value.title
-        cell?.postTime.text = "\(value.expireDate)"
-        var tagResult = ""
-        for tag in value.tags {
-            tagResult += "#\(tag), "
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell") as? JobTableViewCell
+        if self.resultSeachController.active {
+            //searched
+            let value = filteredJobArray[indexPath.row]
+            cell?.salary.text = value.salary
+            cell?.salary.textColor = UIColor(red: 245.0/255, green: 146.0/255, blue: 108.0/255, alpha: 1)
+            cell?.title.text = value.title
+            cell?.postTime.text = "\(value.expireDate)"
+            var tagResult = ""
+            for tag in value.tags {
+                tagResult += "#\(tag), "
+            }
+            cell?.tags.text = tagResult
+        } else {
+            //not search
+            let value = jobArray[indexPath.row]
+            cell?.salary.text = value.salary
+            cell?.salary.textColor = UIColor(red: 245.0/255, green: 146.0/255, blue: 108.0/255, alpha: 1)
+            cell?.title.text = value.title
+            cell?.postTime.text = "\(value.expireDate)"
+            var tagResult = ""
+            for tag in value.tags {
+                tagResult += "#\(tag), "
+            }
+            cell?.tags.text = tagResult
         }
-        cell?.tags.text = tagResult
+        
         
         return cell!
 
@@ -224,6 +256,13 @@ class JobViewController: UITableViewController,CLLocationManagerDelegate {
                 //self.tableView.reloadData()
             } 
         }
+    }
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        filteredJobArray.removeAll(keepCapacity: false)
+        let searchPredicate = NSPredicate(format: "SELF.title CONTAINS[cd] %@", searchController.searchBar.text)
+        let array = (jobArray as NSArray).filteredArrayUsingPredicate(searchPredicate!)
+        filteredJobArray = array as [Job]
+        self.tableView.reloadData()
     }
 }
 
