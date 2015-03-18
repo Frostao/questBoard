@@ -12,6 +12,7 @@
 		66D00FAD1AAAAF37004FADF2 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D00FAC1AAAAF37004FADF2 /* LocationViewController.swift */; };
 		66D00FB51AAAB1F1004FADF2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D00FB41AAAB1F1004FADF2 /* ProfileViewController.swift */; };
 		BFD39F8DED05BBF59DE66ECC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CCA1A05EE7112645865E440 /* libPods.a */; };
+		C00531AC1ABA1154002D127A /* QuestDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00531AB1ABA1154002D127A /* QuestDetailViewController.swift */; };
 		C04B23D01AAA829C002D42D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04B23CF1AAA829C002D42D8 /* AppDelegate.swift */; };
 		C04B23D21AAA829C002D42D8 /* JobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04B23D11AAA829C002D42D8 /* JobViewController.swift */; };
 		C04B23D51AAA829C002D42D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C04B23D31AAA829C002D42D8 /* Main.storyboard */; };
@@ -49,6 +50,7 @@
 		66D00FAC1AAAAF37004FADF2 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		66D00FB41AAAB1F1004FADF2 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		84B94F40AF996EEE5468B21C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		C00531AB1ABA1154002D127A /* QuestDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestDetailViewController.swift; sourceTree = "<group>"; };
 		C04B23CA1AAA829C002D42D8 /* QuestBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuestBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C04B23CE1AAA829C002D42D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C04B23CF1AAA829C002D42D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -116,8 +118,9 @@
 		66D00FB71AAAB345004FADF2 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				668078EA1AAC9EE500A14C8B /* MyAcceptedTableViewController.swift */,
 				66D00FB41AAAB1F1004FADF2 /* ProfileViewController.swift */,
+				668078EA1AAC9EE500A14C8B /* MyAcceptedTableViewController.swift */,
+				C00531AB1ABA1154002D127A /* QuestDetailViewController.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				C0F25D121AAADD66001FC757 /* Job.swift in Sources */,
 				C04B23D01AAA829C002D42D8 /* AppDelegate.swift in Sources */,
 				C0DE612B1AB7C658002C5A86 /* JobAnnotation.swift in Sources */,
+				C00531AC1ABA1154002D127A /* QuestDetailViewController.swift in Sources */,
 				66D00FB51AAAB1F1004FADF2 /* ProfileViewController.swift in Sources */,
 				C06D4C4F1AABE6DA0034230D /* CustomTableViewCell.swift in Sources */,
 				668078EB1AAC9EE500A14C8B /* MyAcceptedTableViewController.swift in Sources */,
