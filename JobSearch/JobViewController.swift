@@ -15,15 +15,10 @@ class JobViewController: UITableViewController,CLLocationManagerDelegate,UISearc
         let defaults = NSUserDefaults.standardUserDefaults()
         if let token:String = defaults.valueForKey("token") as? String {
             self.performSegueWithIdentifier("showAdd", sender: self)
-            
         } else {
             self.performSegueWithIdentifier("showLogin", sender: self)
-
         }
-
     }
-    
-    
     
     var filteredJobArray : [Job] = []
     let locationManager = CLLocationManager()
@@ -55,19 +50,14 @@ class JobViewController: UITableViewController,CLLocationManagerDelegate,UISearc
             self.locationManager.requestWhenInUseAuthorization()
             
         } else {
-            
             locationManager.startUpdatingLocation()
         }
         //let internetTest = NSURLConnection(request: NSURLRequest(URL: NSURL(string: "http://nerved.herokuapp.com")!), delegate: self, startImmediately: true)
         
-        
-        
         let defaults = NSUserDefaults.standardUserDefaults()
         if let token:String = defaults.valueForKey("token") as? String {
-            
         } else {
             self.performSegueWithIdentifier("showLogin", sender: self)
-            
             println("no token")
         }
         
@@ -219,9 +209,14 @@ class JobViewController: UITableViewController,CLLocationManagerDelegate,UISearc
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        currentJob = jobArray[indexPath.row]
-        
-        self.performSegueWithIdentifier("toJobDetail", sender: self)
+        if self.resultSeachController.active{
+            currentJob = filteredJobArray[indexPath.row]
+            self.performSegueWithIdentifier("toJobDetail", sender: self)
+            self.resultSeachController.dismissViewControllerAnimated(false, completion: nil)
+        } else {
+            currentJob = jobArray[indexPath.row]
+            self.performSegueWithIdentifier("toJobDetail", sender: self)
+        }
         
     }
     
@@ -235,8 +230,6 @@ class JobViewController: UITableViewController,CLLocationManagerDelegate,UISearc
         } else if segue.identifier == "toJobDetail" {
             let viewController = segue.destinationViewController as JobDetailViewController
             viewController.currentJob = self.currentJob
-            
-
         }
     }
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -247,8 +240,6 @@ class JobViewController: UITableViewController,CLLocationManagerDelegate,UISearc
 
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         if let currentLocation = locations {
-            
-            
             if location == nil {
                 let thisLocation : CLLocation = currentLocation[0] as CLLocation
                 location = thisLocation.coordinate
