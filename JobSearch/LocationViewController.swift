@@ -36,7 +36,7 @@ class LocationViewController: UIViewController,CLLocationManagerDelegate,MKMapVi
         
         //The "Find me" button
         let button = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
-        button.frame = CGRectMake(UIScreen.mainScreen().bounds.width - 70, self.view.frame.height - 110, 50, 50)
+        button.frame = CGRectMake(UIScreen.mainScreen().bounds.width - 70, self.view.frame.height - 90, 50, 50)
         button.setImage(UIImage(named: "MyLocation"), forState: .Normal)
         button.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
         button.layer.shadowOpacity = 0.5

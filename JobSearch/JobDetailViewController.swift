@@ -101,10 +101,16 @@ class JobDetailViewController: UIViewController,UIAlertViewDelegate {
         self.apply.tintColor = UIColor(red: 245, green: 146, blue: 108, alpha: 1)
         map.setRegion(MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2DMake(currentJob!.latitude, currentJob!.longitude), 5000, 5000), animated: true)
         
+        /*
         let annotation = MKPointAnnotation()
         annotation.coordinate = CLLocationCoordinate2DMake(currentJob!.latitude, currentJob!.longitude)
         map.addAnnotation(annotation)
-        self.hidesBottomBarWhenPushed = true
+        
+        */
+        
+        self.map.zoomEnabled = false;
+        self.map.scrollEnabled = false;
+        self.map.userInteractionEnabled = false;
         
         self.jobDescription.text = currentJob!.detail
         self.postTime.text = "Update : \(currentJob!.date)"
@@ -113,6 +119,7 @@ class JobDetailViewController: UIViewController,UIAlertViewDelegate {
         self.endDate.text = currentJob!.expireDate
         self.jobID.text = "Job ID :\(currentJob!.jobID)"
         // Do any additional setup after loading the view.
+        
     }
     
     override func didReceiveMemoryWarning() {

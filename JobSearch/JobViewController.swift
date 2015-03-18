@@ -275,11 +275,15 @@ class JobViewController: UITableViewController,CLLocationManagerDelegate,UISearc
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toMap" {
             let viewController = segue.destinationViewController as LocationViewController
+            //viewController.hidesBottomBarWhenPushed = true
             viewController.jobArray = self.jobArray
             viewController.myLocation = self.location
+            
         } else if segue.identifier == "toJobDetail" {
             let viewController = segue.destinationViewController as JobDetailViewController
+            //viewController.hidesBottomBarWhenPushed = true
             viewController.currentJob = self.currentJob
+            
         }
     }
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
