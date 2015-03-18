@@ -118,6 +118,7 @@ class JobDetailViewController: UIViewController,UIAlertViewDelegate {
         self.salary.text = currentJob!.salary
         self.endDate.text = currentJob!.expireDate
         self.jobID.text = "Job ID :\(currentJob!.jobID)"
+        
         // Do any additional setup after loading the view.
         
     }
