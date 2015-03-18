@@ -20,7 +20,8 @@ class JobViewController: UITableViewController,CLLocationManagerDelegate,UISearc
         }
     }
     
-    var filteredJobArray : [Job] = []
+    var localFilteredJobArray : [Job] = []
+    var serverFilteredJobArray : [Job] = []
     let locationManager = CLLocationManager()
     var socket = SIOSocket()
     var jobArray:[Job] = []
@@ -163,12 +164,21 @@ class JobViewController: UITableViewController,CLLocationManagerDelegate,UISearc
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        if self.resultSeachController.active{
+            return 2
+        } else {
+            return 1
+        }
+        
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.resultSeachController.active {
-            return self.filteredJobArray.count
+            if section == 0 {
+                return self.localFilteredJobArray.count
+            } else {
+                return self.serverFilteredJobArray.count
+            }
         } else {
             return self.jobArray.count
         }
@@ -179,16 +189,32 @@ class JobViewController: UITableViewController,CLLocationManagerDelegate,UISearc
         let cell = tableView.dequeueReusableCellWithIdentifier("cell") as? JobTableViewCell
         if self.resultSeachController.active {
             //searched
-            let value = filteredJobArray[indexPath.row]
-            cell?.salary.text = value.salary
-            cell?.salary.textColor = UIColor(red: 245.0/255, green: 146.0/255, blue: 108.0/255, alpha: 1)
-            cell?.title.text = value.title
-            cell?.postTime.text = "\(value.expireDate)"
-            var tagResult = ""
-            for tag in value.tags {
-                tagResult += "#\(tag), "
+            if indexPath.section == 0{
+                //local result
+                let value = self.localFilteredJobArray[indexPath.row]
+                cell?.salary.text = value.salary
+                cell?.salary.textColor = UIColor(red: 245.0/255, green: 146.0/255, blue: 108.0/255, alpha: 1)
+                cell?.title.text = value.title
+                cell?.postTime.text = "\(value.expireDate)"
+                var tagResult = ""
+                for tag in value.tags {
+                    tagResult += "#\(tag), "
+                }
+                cell?.tags.text = tagResult
+            } else {
+                //server result
+                let value = self.serverFilteredJobArray[indexPath.row]
+                cell?.salary.text = value.salary
+                cell?.salary.textColor = UIColor(red: 245.0/255, green: 146.0/255, blue: 108.0/255, alpha: 1)
+                cell?.title.text = value.title
+                cell?.postTime.text = "\(value.expireDate)"
+                var tagResult = ""
+                for tag in value.tags {
+                    tagResult += "#\(tag), "
+                }
+                cell?.tags.text = tagResult
             }
-            cell?.tags.text = tagResult
+            
         } else {
             //not search
             let value = jobArray[indexPath.row]
@@ -208,13 +234,37 @@ class JobViewController: UITableViewController,CLLocationManagerDelegate,UISearc
 
     }
     
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if self.resultSeachController.active {
+            if section == 0 {
+                if self.localFilteredJobArray.count != 0 {
+                    return "The Quest Near you"
+                }
+                
+            } else {
+                if self.serverFilteredJobArray.count != 0 {
+                    return "All the Quest on the server"
+                }
+            }
+        } else {
+            return ""
+        }
+        return ""
+    }
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if self.resultSeachController.active{
-            currentJob = filteredJobArray[indexPath.row]
+            if indexPath.section == 0{
+                //local
+                currentJob = self.localFilteredJobArray[indexPath.row]
+            } else {
+                //server side
+                currentJob = self.serverFilteredJobArray[indexPath.row]
+            }
             self.performSegueWithIdentifier("toJobDetail", sender: self)
             self.resultSeachController.dismissViewControllerAnimated(false, completion: nil)
         } else {
-            currentJob = jobArray[indexPath.row]
+            currentJob = self.jobArray[indexPath.row]
             self.performSegueWithIdentifier("toJobDetail", sender: self)
         }
         
@@ -296,7 +346,7 @@ class JobViewController: UITableViewController,CLLocationManagerDelegate,UISearc
                     
                     
                     let job = Job(longitude: coordinate[0] as Double, latitude: coordinate[1] as Double,salary:salary,title:title,detail:description,date:dateResult,expireDate:expireDateResult,jobID:id,tags:tags,UUID:uuid,postID:hay)
-                    self.filteredJobArray.append(job)
+                    self.serverFilteredJobArray.append(job)
                 }
                 self.tableView.reloadData()
             })
@@ -308,12 +358,13 @@ class JobViewController: UITableViewController,CLLocationManagerDelegate,UISearc
     
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
-        filteredJobArray.removeAll(keepCapacity: false)
-        /* Local search
+        localFilteredJobArray.removeAll(keepCapacity: false)
+        serverFilteredJobArray.removeAll(keepCapacity: false)
+        
+        //Local search
         let searchPredicate = NSPredicate(format: "SELF.title CONTAINS[cd] %@", searchController.searchBar.text)
         let array = (jobArray as NSArray).filteredArrayUsingPredicate(searchPredicate!)
-        filteredJobArray = array as [Job]
-        */
+        self.localFilteredJobArray = array as [Job]
         
         //sever search
         getSearchResultsFromServer(searchController.searchBar.text)
