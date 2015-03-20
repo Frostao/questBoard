@@ -35,6 +35,7 @@ class JobViewController: UITableViewController,CLLocationManagerDelegate,UISearc
 )
       bar.backgroundColor = UIColor(red: 245.0/255, green: 146.0/255, blue: 108.0/255, alpha: 1)
         self.navigationController?.navigationBar.addSubview(bar)
+        self.navigationController?.navigationBar.translucent = false
         self.definesPresentationContext = true
         self.resultSeachController = ({
             let controller = UISearchController(searchResultsController: nil)
