@@ -67,7 +67,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Post Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GsO-1Q-G9h">
                                             <rect key="frame" x="395" y="60" width="111" height="32"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="111" id="RXb-Xe-99p"/>
+                                                <constraint firstAttribute="width" constant="111" id="4l8-Wm-nIP"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" white="0.63" alpha="1" colorSpace="calibratedWhite"/>
@@ -76,16 +76,16 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tags" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IfL-bA-HiI">
                                             <rect key="frame" x="16" y="60" width="371" height="28"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="28" id="90k-n3-cJM"/>
+                                                <constraint firstAttribute="height" constant="28" id="NXh-VF-VTW"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Salary" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ph6-fc-qKW">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Salary" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ph6-fc-qKW">
                                             <rect key="frame" x="514" y="1" width="86" height="92"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="86" id="yc8-Wp-aCZ"/>
+                                                <constraint firstAttribute="width" constant="86" id="8H0-tI-XcU"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -93,19 +93,19 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="Ph6-fc-qKW" secondAttribute="trailing" id="1Pd-sn-Vdo"/>
-                                        <constraint firstItem="GsO-1Q-G9h" firstAttribute="leading" secondItem="IfL-bA-HiI" secondAttribute="trailing" constant="8" symbolic="YES" id="1YY-Sr-yDF"/>
-                                        <constraint firstItem="8MR-7j-Lbx" firstAttribute="top" secondItem="h4R-hH-8XJ" secondAttribute="topMargin" id="HWB-zR-j3G"/>
-                                        <constraint firstItem="Ph6-fc-qKW" firstAttribute="leading" secondItem="GsO-1Q-G9h" secondAttribute="trailing" constant="8" symbolic="YES" id="Kl0-Po-oMu"/>
-                                        <constraint firstItem="8MR-7j-Lbx" firstAttribute="firstBaseline" secondItem="Ph6-fc-qKW" secondAttribute="firstBaseline" id="V4d-1D-VoS"/>
-                                        <constraint firstItem="IfL-bA-HiI" firstAttribute="leading" secondItem="8MR-7j-Lbx" secondAttribute="leading" id="Yzp-3C-eHZ"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="IfL-bA-HiI" secondAttribute="bottom" constant="9.5" id="gYL-cA-9a3"/>
-                                        <constraint firstItem="8MR-7j-Lbx" firstAttribute="leading" secondItem="h4R-hH-8XJ" secondAttribute="leadingMargin" constant="8" id="gbl-H4-X9T"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="Ph6-fc-qKW" secondAttribute="bottom" constant="4.5" id="j3s-g2-ftt"/>
-                                        <constraint firstItem="Ph6-fc-qKW" firstAttribute="leading" secondItem="8MR-7j-Lbx" secondAttribute="trailing" constant="8" symbolic="YES" id="nya-oo-tQt"/>
-                                        <constraint firstItem="IfL-bA-HiI" firstAttribute="top" secondItem="8MR-7j-Lbx" secondAttribute="bottom" constant="7" id="o0b-E7-UW3"/>
-                                        <constraint firstItem="GsO-1Q-G9h" firstAttribute="firstBaseline" secondItem="IfL-bA-HiI" secondAttribute="firstBaseline" id="sqg-xu-z7a"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="GsO-1Q-G9h" secondAttribute="bottom" constant="5.5" id="tok-6m-G71"/>
+                                        <constraint firstItem="8MR-7j-Lbx" firstAttribute="top" secondItem="h4R-hH-8XJ" secondAttribute="topMargin" id="2Wj-62-ZA4"/>
+                                        <constraint firstItem="8MR-7j-Lbx" firstAttribute="leading" secondItem="h4R-hH-8XJ" secondAttribute="leadingMargin" constant="8" id="53f-mc-eVy"/>
+                                        <constraint firstItem="Ph6-fc-qKW" firstAttribute="leading" secondItem="8MR-7j-Lbx" secondAttribute="trailing" constant="8" symbolic="YES" id="APT-Cs-gGa"/>
+                                        <constraint firstItem="IfL-bA-HiI" firstAttribute="leading" secondItem="8MR-7j-Lbx" secondAttribute="leading" id="G54-Ic-FeF"/>
+                                        <constraint firstAttribute="trailing" secondItem="Ph6-fc-qKW" secondAttribute="trailing" id="Mcm-Cl-eI1"/>
+                                        <constraint firstItem="IfL-bA-HiI" firstAttribute="top" secondItem="8MR-7j-Lbx" secondAttribute="bottom" constant="7" id="Nua-PV-jRF"/>
+                                        <constraint firstItem="8MR-7j-Lbx" firstAttribute="firstBaseline" secondItem="Ph6-fc-qKW" secondAttribute="firstBaseline" id="VUD-uG-hfs"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="IfL-bA-HiI" secondAttribute="bottom" constant="9.5" id="WSm-Im-aKt"/>
+                                        <constraint firstItem="GsO-1Q-G9h" firstAttribute="firstBaseline" secondItem="IfL-bA-HiI" secondAttribute="firstBaseline" id="Zdy-vX-GrG"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Ph6-fc-qKW" secondAttribute="bottom" constant="4.5" id="ZyT-hN-Bej"/>
+                                        <constraint firstItem="Ph6-fc-qKW" firstAttribute="leading" secondItem="GsO-1Q-G9h" secondAttribute="trailing" constant="8" symbolic="YES" id="b8j-i5-xQ5"/>
+                                        <constraint firstItem="GsO-1Q-G9h" firstAttribute="leading" secondItem="IfL-bA-HiI" secondAttribute="trailing" constant="8" symbolic="YES" id="laL-7g-nLc"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="GsO-1Q-G9h" secondAttribute="bottom" constant="5.5" id="uOD-wm-qO9"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -768,7 +768,6 @@
         <!--My Quest Table View Controller-->
         <scene sceneID="TA3-Oc-OK9">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jq0-Ql-9BU" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="Ogc-eK-KQ9" customClass="MyQuestTableViewController" customModule="QuestBoard" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="eyE-uJ-pqb">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -805,6 +804,7 @@
                         <segue destination="6aB-Ub-c5m" kind="show" identifier="toQuestDetail" id="Ia0-fH-nPw"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jq0-Ql-9BU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1534" y="2189"/>
         </scene>
@@ -990,8 +990,8 @@
         <image name="map" width="30" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kk9-vJ-TGh"/>
-        <segue reference="mB2-kM-8df"/>
+        <segue reference="MCR-ou-aPE"/>
         <segue reference="jKJ-ee-mGL"/>
+        <segue reference="Vn6-7N-DGS"/>
     </inferredMetricsTieBreakers>
 </document>
