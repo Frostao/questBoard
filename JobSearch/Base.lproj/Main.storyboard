@@ -23,7 +23,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YYV-4o-Osk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="305" y="411"/>
+            <point key="canvasLocation" x="-311" y="875"/>
         </scene>
         <!--Quests-->
         <scene sceneID="DT5-xR-Hi7">
@@ -42,7 +42,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dBU-mX-n7A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1117" y="411"/>
+            <point key="canvasLocation" x="919" y="503"/>
         </scene>
         <!--Quests-->
         <scene sceneID="ZKD-ef-rAu">
@@ -141,7 +141,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QWV-HX-Un1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1929" y="410"/>
+            <point key="canvasLocation" x="1897" y="514"/>
         </scene>
         <!--Job Detail-->
         <scene sceneID="b62-y9-3Ku">
@@ -287,7 +287,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YVu-ME-XY7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2696" y="411"/>
+            <point key="canvasLocation" x="2732" y="503"/>
         </scene>
         <!--Location View Controller-->
         <scene sceneID="hOv-2Q-lQW">
@@ -320,7 +320,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tyY-Zh-e6G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3508" y="-363"/>
+            <point key="canvasLocation" x="1904" y="-255"/>
         </scene>
         <!--Add View Controller-->
         <scene sceneID="owl-6O-XS3">
@@ -409,7 +409,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Bh-bH-OdA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3553" y="-1041"/>
+            <point key="canvasLocation" x="3417" y="-309"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6Wo-l2-K40">
@@ -427,7 +427,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T29-5J-k9b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2741" y="-1041"/>
+            <point key="canvasLocation" x="2696" y="-309"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="oHy-P7-0kE">
@@ -503,7 +503,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZIQ-vT-wKd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1975" y="-920"/>
+            <point key="canvasLocation" x="1135" y="-243"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="THQ-QM-lQ8">
@@ -641,7 +641,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="neO-oO-hHE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-416" y="-243"/>
+            <point key="canvasLocation" x="-356" y="-243"/>
         </scene>
         <!--Adventure-->
         <scene sceneID="glB-zR-R4m">
@@ -715,6 +715,7 @@
                         <outlet property="tableview1" destination="cmp-hM-Wff" id="nXH-4p-mca"/>
                         <segue destination="bxt-yK-nYK" kind="presentation" identifier="showLogin" id="V2C-JH-wEQ"/>
                         <segue destination="fab-G3-daM" kind="show" identifier="toAccpted" id="gRc-ID-Ad6"/>
+                        <segue destination="Ogc-eK-KQ9" kind="show" identifier="toMyQuest" id="7V5-Hf-bxt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WJw-4S-yrY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -762,7 +763,50 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M1m-DP-tBl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2690" y="1299"/>
+            <point key="canvasLocation" x="2270" y="2189"/>
+        </scene>
+        <!--My Quest Table View Controller-->
+        <scene sceneID="TA3-Oc-OK9">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jq0-Ql-9BU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="Ogc-eK-KQ9" customClass="MyQuestTableViewController" customModule="QuestBoard" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="eyE-uJ-pqb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="wQV-02-lUe" detailTextLabel="tK1-oj-FAY" style="IBUITableViewCellStyleSubtitle" id="OUG-VG-oZE">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OUG-VG-oZE" id="xCf-I8-vsK">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wQV-02-lUe">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tK1-oj-FAY">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Ogc-eK-KQ9" id="B2s-eL-fuF"/>
+                            <outlet property="delegate" destination="Ogc-eK-KQ9" id="vDI-J2-wWx"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <segue destination="6aB-Ub-c5m" kind="show" identifier="toQuestDetail" id="Ia0-fH-nPw"/>
+                    </connections>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="1534" y="2189"/>
         </scene>
         <!--Adventurer-->
         <scene sceneID="i3T-ID-4Pu">
@@ -781,7 +825,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zf9-Hn-8E8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="919" y="1243"/>
+            <point key="canvasLocation" x="919" y="1301"/>
         </scene>
         <!--Quest Detail-->
         <scene sceneID="NVe-dY-jX0">
@@ -936,7 +980,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ry-WC-xBj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3434" y="1301"/>
+            <point key="canvasLocation" x="1904" y="3025"/>
         </scene>
     </scenes>
     <resources>
@@ -946,7 +990,8 @@
         <image name="map" width="30" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mB2-kM-8df"/>
         <segue reference="kk9-vJ-TGh"/>
+        <segue reference="mB2-kM-8df"/>
+        <segue reference="jKJ-ee-mGL"/>
     </inferredMetricsTieBreakers>
 </document>

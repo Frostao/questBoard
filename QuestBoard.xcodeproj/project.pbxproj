@@ -23,6 +23,7 @@
 		C06D4C4D1AABE6D00034230D /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06D4C4C1AABE6D00034230D /* AddViewController.swift */; };
 		C06D4C4F1AABE6DA0034230D /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06D4C4E1AABE6DA0034230D /* CustomTableViewCell.swift */; };
 		C06D4C511AABE6EA0034230D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06D4C501AABE6EA0034230D /* SignUpViewController.swift */; };
+		C087E7AB1ABA72AA00AAC318 /* MyQuestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C087E7AA1ABA72AA00AAC318 /* MyQuestTableViewController.swift */; };
 		C0DE612B1AB7C658002C5A86 /* JobAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DE612A1AB7C658002C5A86 /* JobAnnotation.swift */; };
 		C0DE61331AB7CED1002C5A86 /* ClusterAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0DE61321AB7CED1002C5A86 /* ClusterAnnotationView.m */; };
 		C0F25D0C1AAABEDF001FC757 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0F25D0B1AAABEDF001FC757 /* MapKit.framework */; };
@@ -65,6 +66,7 @@
 		C06D4C4C1AABE6D00034230D /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		C06D4C4E1AABE6DA0034230D /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		C06D4C501AABE6EA0034230D /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		C087E7AA1ABA72AA00AAC318 /* MyQuestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyQuestTableViewController.swift; sourceTree = "<group>"; };
 		C0DE612A1AB7C658002C5A86 /* JobAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobAnnotation.swift; sourceTree = "<group>"; };
 		C0DE61321AB7CED1002C5A86 /* ClusterAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClusterAnnotationView.m; sourceTree = "<group>"; };
 		C0DE61341AB7CED6002C5A86 /* ClusterAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClusterAnnotationView.h; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			children = (
 				66D00FB41AAAB1F1004FADF2 /* ProfileViewController.swift */,
 				668078EA1AAC9EE500A14C8B /* MyAcceptedTableViewController.swift */,
+				C087E7AA1ABA72AA00AAC318 /* MyQuestTableViewController.swift */,
 				C00531AB1ABA1154002D127A /* QuestDetailViewController.swift */,
 			);
 			name = Profile;
@@ -361,6 +364,7 @@
 				C06D4C511AABE6EA0034230D /* SignUpViewController.swift in Sources */,
 				66D00FAB1AAAAE78004FADF2 /* LoginViewController.swift in Sources */,
 				C04B23D21AAA829C002D42D8 /* JobViewController.swift in Sources */,
+				C087E7AB1ABA72AA00AAC318 /* MyQuestTableViewController.swift in Sources */,
 				C06D4C4D1AABE6D00034230D /* AddViewController.swift in Sources */,
 				C0F25D121AAADD66001FC757 /* Job.swift in Sources */,
 				C04B23D01AAA829C002D42D8 /* AppDelegate.swift in Sources */,

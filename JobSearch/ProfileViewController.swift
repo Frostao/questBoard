@@ -69,21 +69,22 @@ class ProfileViewController: UIViewController,UITableViewDelegate,UITableViewDat
                         self.socket.on("response", callback: { (args:[AnyObject]!)  in
                             let arg = args as SIOParameterArray
                             let dict = arg[0] as NSDictionary
+                            //println("whoamI")
+                            //println(dict)
                             let arr: AnyObject = dict.objectForKey("data")!.objectForKey("accepted")!
-                            
+            
                             var i = 0
                             while i < arr.count {
                                 self.acceptedCourse.append(arr[i] as String)
                                 i++
                             }
-
                     
-                })
+                        })
                     }
                 }
             
-        )
-            }
+            )
+        }
         }else {
             let defaults = NSUserDefaults.standardUserDefaults()
             if let token:String = defaults.valueForKey("token") as? String {
@@ -156,13 +157,22 @@ class ProfileViewController: UIViewController,UITableViewDelegate,UITableViewDat
                 SIOSocket.socketWithHost("http://nerved.herokuapp.com", response: { (socket:SIOSocket!) in
                     
                     self.socket = socket;
-                    let theToken = NSDictionary(objectsAndKeys: self.acceptedCourse, "uuid")
+                    var theToken = NSDictionary()
+                    if indexPath.row == 0 {
+                        //My Quest
+                        theToken = NSDictionary(objectsAndKeys: token, "uuid")
+                    } else {
+                        //Accedpted Quest
+                        theToken = NSDictionary(objectsAndKeys: self.acceptedCourse, "uuid")
+                    }
+                    
                     self.socket.emit("postfromid", args: [theToken])
                     self.socket.on("response", callback: { (args:[AnyObject]!)  in
                         self.jobArray = []
                         let arg = args as SIOParameterArray
                         //println(arg.firstObject!)
                         let dict = arg[0] as NSDictionary
+                        println(dict)
                         let data: NSArray = dict["data"] as NSArray//get data
                         for entryDict in data{
                             //println(entryDict)
@@ -207,8 +217,16 @@ class ProfileViewController: UIViewController,UITableViewDelegate,UITableViewDat
                             
                         }
                         //println(self.jobArray[0].title)
-                        println(dict)
-                        self.performSegueWithIdentifier("toAccpted", sender: self)
+                        //println(dict)
+                        
+                        if indexPath.row == 0 {
+                            //My Quest
+                            self.performSegueWithIdentifier("toMyQuest", sender: self)
+                        } else {
+                            //Accedpted Quest
+                            self.performSegueWithIdentifier("toAccpted", sender: self)
+                        }
+                        
                         
                     })
                     
@@ -245,6 +263,9 @@ class ProfileViewController: UIViewController,UITableViewDelegate,UITableViewDat
     // Pass the selected object to the new view controller.
         if segue.identifier == "toAccpted" {
             let viewController = segue.destinationViewController as MyAcceptedTableViewController
+            viewController.jobArray = self.jobArray
+        } else if segue.identifier == "toMyQuest" {
+            let viewController = segue.destinationViewController as MyQuestTableViewController
             viewController.jobArray = self.jobArray
         }
     }

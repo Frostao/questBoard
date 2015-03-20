@@ -101,7 +101,7 @@ class JobViewController: UITableViewController,CLLocationManagerDelegate,UISearc
                 let arg = args as SIOParameterArray
                 //println(arg.firstObject!)
                 let dict = arg[0] as NSDictionary
-                //println(dict)
+                println(dict)
                 let data: NSArray = dict["data"] as NSArray//get data
                 for entryDict in data{
                     //println(entryDict)
