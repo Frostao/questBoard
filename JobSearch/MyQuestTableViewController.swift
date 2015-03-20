@@ -13,7 +13,7 @@ class MyQuestTableViewController: UITableViewController {
     var jobArray : [Job] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = "My Quests"
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -44,6 +44,7 @@ class MyQuestTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
         cell.textLabel?.text = self.jobArray[indexPath.row].title
+        cell.detailTextLabel?.text = self.jobArray[indexPath.row].salary
         // Configure the cell...
 
         return cell

@@ -14,7 +14,8 @@ class MyAcceptedTableViewController: UITableViewController {
     var jobArray : [Job] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Quests"
+        self.title = "Applied Quests"
+        println("MyAccepted")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
