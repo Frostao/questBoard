@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		668078EB1AAC9EE500A14C8B /* MyAcceptedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668078EA1AAC9EE500A14C8B /* MyAcceptedTableViewController.swift */; };
 		66D00FAB1AAAAE78004FADF2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D00FAA1AAAAE78004FADF2 /* LoginViewController.swift */; };
 		66D00FAD1AAAAF37004FADF2 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D00FAC1AAAAF37004FADF2 /* LocationViewController.swift */; };
 		66D00FB51AAAB1F1004FADF2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D00FB41AAAB1F1004FADF2 /* ProfileViewController.swift */; };
@@ -45,7 +44,6 @@
 		1CCA1A05EE7112645865E440 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		43544A0006E3F5BF8A62C6F6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		6633375E1AAA91F60068C97B /* libPods-SIOSocket.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-SIOSocket.a"; path = "Pods/build/Debug-iphoneos/libPods-SIOSocket.a"; sourceTree = "<group>"; };
-		668078EA1AAC9EE500A14C8B /* MyAcceptedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAcceptedTableViewController.swift; sourceTree = "<group>"; };
 		66D00FAA1AAAAE78004FADF2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		66D00FAC1AAAAF37004FADF2 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		66D00FB41AAAB1F1004FADF2 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -119,7 +117,6 @@
 			isa = PBXGroup;
 			children = (
 				66D00FB41AAAB1F1004FADF2 /* ProfileViewController.swift */,
-				668078EA1AAC9EE500A14C8B /* MyAcceptedTableViewController.swift */,
 				C087E7AA1ABA72AA00AAC318 /* MyQuestTableViewController.swift */,
 				C00531AB1ABA1154002D127A /* QuestDetailViewController.swift */,
 			);
@@ -372,7 +369,6 @@
 				C00531AC1ABA1154002D127A /* QuestDetailViewController.swift in Sources */,
 				66D00FB51AAAB1F1004FADF2 /* ProfileViewController.swift in Sources */,
 				C06D4C4F1AABE6DA0034230D /* CustomTableViewCell.swift in Sources */,
-				668078EB1AAC9EE500A14C8B /* MyAcceptedTableViewController.swift in Sources */,
 				C064FBD91AAB550F008B3848 /* JobDetailViewController.swift in Sources */,
 				66D00FAD1AAAAF37004FADF2 /* LocationViewController.swift in Sources */,
 				C064FBDF1AAB9E3A008B3848 /* JobTableViewCell.swift in Sources */,

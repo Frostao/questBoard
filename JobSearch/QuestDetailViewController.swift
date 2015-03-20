@@ -88,9 +88,22 @@ class QuestDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.delete.backgroundColor = UIColor(red: 255/255.0, green: 110/255.0, blue: 128/255.0, alpha: 1)
+        self.edit.backgroundColor = UIColor(red: 255/255.0, green: 110/255.0, blue: 128/255.0, alpha: 1)
+        self.edit.tintColor = UIColor(red: 245, green: 146, blue: 108, alpha: 1)
+        self.delete.backgroundColor = UIColor(red: 245.0/255, green: 146.0/255, blue: 108.0/255, alpha: 1)
         self.delete.tintColor = UIColor(red: 245, green: 146, blue: 108, alpha: 1)
-
+        
+        mapView.setRegion(MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2DMake(currentJob!.latitude, currentJob!.longitude), 5000, 5000), animated: true)
+        self.mapView.zoomEnabled = false;
+        self.mapView.scrollEnabled = false;
+        self.mapView.userInteractionEnabled = false;
+        
+        self.jobDescription.text = currentJob!.detail
+        self.postTime.text = "Update : \(currentJob!.date)"
+        self.jobTitle.text = currentJob!.title
+        self.salary.text = currentJob!.salary
+        self.endDate.text = currentJob!.expireDate
+        self.jobID.text = "Job ID :\(currentJob!.jobID)"
         // Do any additional setup after loading the view.
     }
 

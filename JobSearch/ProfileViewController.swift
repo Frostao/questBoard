@@ -314,11 +314,15 @@ class ProfileViewController: UIViewController,UITableViewDelegate,UITableViewDat
     // Get the new view controller using segue.destinationViewController.
     // Pass the selected object to the new view controller.
         if segue.identifier == "toAccpted" {
-            let viewController = segue.destinationViewController as MyAcceptedTableViewController
+            let viewController = segue.destinationViewController as MyQuestTableViewController
+            viewController.title = "Applied Quests"
             viewController.jobArray = self.jobArray
+            viewController.from = "toAccpted"
         } else if segue.identifier == "toMyQuest" {
             let viewController = segue.destinationViewController as MyQuestTableViewController
             viewController.jobArray = self.myQuest
+            viewController.title = "My Quest"
+            viewController.from = "toMyQuest"
         }
     }
     
