@@ -31,14 +31,17 @@ class JobViewController: UITableViewController,CLLocationManagerDelegate,UISearc
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let bar = UIView(frame: CGRectMake(0, 44, UIScreen.mainScreen().bounds.width, 1.0)
+)
+      bar.backgroundColor = UIColor(red: 245.0/255, green: 146.0/255, blue: 108.0/255, alpha: 1)
+        self.navigationController?.navigationBar.addSubview(bar)
         self.definesPresentationContext = true
         self.resultSeachController = ({
             let controller = UISearchController(searchResultsController: nil)
             controller.searchResultsUpdater = self
             controller.dimsBackgroundDuringPresentation = false
             controller.searchBar.sizeToFit()
-            controller.searchBar.barTintColor = UIColor(red: 245.0/255, green: 146.0/255, blue: 108.0/255, alpha: 0.8)
+            controller.searchBar.barTintColor = UIColor(red: 245.0/255, green: 146.0/255, blue: 108.0/255, alpha: 1)
             controller.searchBar.tintColor = UIColor(red: 245, green: 146, blue: 108, alpha: 1)
             controller.searchBar.translucent = false
             //controller.hidesNavigationBarDuringPresentation = false
