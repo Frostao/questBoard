@@ -31,21 +31,24 @@ class JobViewController: UITableViewController,CLLocationManagerDelegate,UISearc
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.definesPresentationContext = true
         let bar = UIView(frame: CGRectMake(0, 44, UIScreen.mainScreen().bounds.width, 1.0)
 )
       bar.backgroundColor = UIColor(red: 245.0/255, green: 146.0/255, blue: 108.0/255, alpha: 1)
         self.navigationController?.navigationBar.addSubview(bar)
-        self.navigationController?.navigationBar.translucent = false
-        self.definesPresentationContext = true
+        self.navigationController?.navigationBar.translucent = true
+        
+       
         self.resultSeachController = ({
             let controller = UISearchController(searchResultsController: nil)
             controller.searchResultsUpdater = self
             controller.dimsBackgroundDuringPresentation = false
             controller.searchBar.sizeToFit()
+            
             controller.searchBar.barTintColor = UIColor(red: 245.0/255, green: 146.0/255, blue: 108.0/255, alpha: 1)
             controller.searchBar.tintColor = UIColor(red: 245, green: 146, blue: 108, alpha: 1)
             controller.searchBar.translucent = false
-            //controller.hidesNavigationBarDuringPresentation = false
+            //controller.hidesNavigationBarDuringPresentation = true
             
             self.tableView.tableHeaderView = controller.searchBar
             
@@ -110,7 +113,7 @@ class JobViewController: UITableViewController,CLLocationManagerDelegate,UISearc
                 let arg = args as SIOParameterArray
                 //println(arg.firstObject!)
                 let dict = arg[0] as NSDictionary
-                println(dict)
+                //println(dict)
                 let data: NSArray = dict["data"] as NSArray//get data
                 for entryDict in data{
                     //println(entryDict)
@@ -163,7 +166,7 @@ class JobViewController: UITableViewController,CLLocationManagerDelegate,UISearc
                 let attributedTitle = NSAttributedString(string: title)
                 self.refreshControl?.attributedTitle = attributedTitle
                 
-                println(NSDate())
+                //println(NSDate())
                 self.refreshControl?.endRefreshing()
                 //self.location.append( as String)
                 

@@ -13,6 +13,7 @@ class ProfileViewController: UIViewController,UITableViewDelegate,UITableViewDat
     @IBOutlet weak var name: UILabel!
     var loggedin:Bool = false
     var acceptedCourse : [String] = []
+    var myQuest : [Job] = []
     var socket = SIOSocket()
     var jobArray : [Job] = []
     override func viewDidLoad() {
@@ -57,7 +58,62 @@ class ProfileViewController: UIViewController,UITableViewDelegate,UITableViewDat
         if indexPath.section == 0 {
             if indexPath.row == 0 {
                 cell.textLabel?.text = "My Quest"
-                
+                SIOSocket.socketWithHost("http://nerved.herokuapp.com", response: { (socket:SIOSocket!) in
+                    let defaults = NSUserDefaults.standardUserDefaults()
+                    if let token:String = defaults.valueForKey("token") as? String {
+                        self.socket = socket;
+                        let theToken = NSDictionary(objectsAndKeys: token, "token")
+                        self.socket.emit("getmyposts", args: [theToken])
+                        self.socket.on("response", callback: { (args:[AnyObject]!)  in
+                            let arg = args as SIOParameterArray
+                            let dict = arg[0] as NSDictionary
+                            self.myQuest = []
+                            let data: NSArray = dict["data"] as NSArray//get data
+                            for entryDict in data{
+                                //println(entryDict)
+                                
+                                //location && coordinate
+                                let location:NSDictionary = entryDict.objectForKey("location") as NSDictionary
+                                let coordinate:NSArray = (location.objectForKey("coordinates") as NSArray)
+                                let title:String = entryDict.objectForKey("title") as String
+                                //title
+                                let description:String = entryDict.objectForKey("description") as String
+                                let salaryDouble:String = entryDict.objectForKey("comp") as String
+                                let salary = "$" + salaryDouble
+                                
+                                let date = entryDict.objectForKey("date") as String
+                                let expireDate = entryDict.objectForKey("expire") as String
+                                
+                                let dateFormatter = NSDateFormatter()
+                                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+                                
+                                let dateMid = dateFormatter.dateFromString(date)
+                                let expireDateMid = dateFormatter.dateFromString(expireDate)
+                                
+                                let dateFormatter2 = NSDateFormatter()
+                                dateFormatter2.dateFormat = "MMM dd"
+                                let dateResult = dateFormatter2.stringFromDate(dateMid!)
+                                let expireDateResult = dateFormatter2.stringFromDate(expireDateMid!)
+                                
+                                
+                                let hay = entryDict.objectForKey("postid") as String
+                                let endIndex = advance(hay.startIndex, 5)
+                                let id = hay.substringToIndex(endIndex)
+                                
+                                let tags:NSArray = entryDict.objectForKey("tags") as NSArray
+                                
+                                
+                                
+                                let uuid = entryDict.objectForKey("uuid") as String
+                                
+                                
+                                let job = Job(longitude: coordinate[0] as Double, latitude: coordinate[1] as Double,salary:salary,title:title,detail:description,date:dateResult,expireDate:expireDateResult,jobID:id,tags:tags,UUID:uuid,postID:hay)
+                                self.myQuest.append(job)
+                            }
+                        })
+                    }
+                })
+
             } else{
                 cell.textLabel?.text = "Accepted Quest"
                 SIOSocket.socketWithHost("http://nerved.herokuapp.com", response: { (socket:SIOSocket!) in
@@ -69,8 +125,6 @@ class ProfileViewController: UIViewController,UITableViewDelegate,UITableViewDat
                         self.socket.on("response", callback: { (args:[AnyObject]!)  in
                             let arg = args as SIOParameterArray
                             let dict = arg[0] as NSDictionary
-                            //println("whoamI")
-                            //println(dict)
                             let arr: AnyObject = dict.objectForKey("data")!.objectForKey("accepted")!
             
                             var i = 0
@@ -151,8 +205,9 @@ class ProfileViewController: UIViewController,UITableViewDelegate,UITableViewDat
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         if indexPath.section == 0 {
-            let defaults = NSUserDefaults.standardUserDefaults()
-            if let token:String = defaults.valueForKey("token") as? String {
+            if indexPath.row == 1 {
+                let defaults = NSUserDefaults.standardUserDefaults()
+                if let token:String = defaults.valueForKey("token") as? String {
 
                 SIOSocket.socketWithHost("http://nerved.herokuapp.com", response: { (socket:SIOSocket!) in
                     
@@ -233,9 +288,11 @@ class ProfileViewController: UIViewController,UITableViewDelegate,UITableViewDat
                     
                 })
             } else {
-                self.performSegueWithIdentifier("showLogin", sender: self)
+                    self.performSegueWithIdentifier("showLogin", sender: self)
+                }
+            } else {
+                self.performSegueWithIdentifier("toMyQuest", sender: self)
             }
-        
 
         } else {
             let defaults = NSUserDefaults.standardUserDefaults()
@@ -266,7 +323,7 @@ class ProfileViewController: UIViewController,UITableViewDelegate,UITableViewDat
             viewController.jobArray = self.jobArray
         } else if segue.identifier == "toMyQuest" {
             let viewController = segue.destinationViewController as MyQuestTableViewController
-            viewController.jobArray = self.jobArray
+            viewController.jobArray = self.myQuest
         }
     }
     
