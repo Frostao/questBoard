@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 class Job:NSObject{
     var longitude: Double
     var latitude : Double
@@ -34,4 +35,5 @@ class Job:NSObject{
         self.UUID = UUID
         self.postID = postID
     }
+    
 }

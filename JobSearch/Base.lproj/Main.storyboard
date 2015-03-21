@@ -930,6 +930,7 @@
                         <outlet property="mapView" destination="n6m-TF-wXD" id="gCr-E2-Ref"/>
                         <outlet property="postTime" destination="E66-Fx-aGD" id="ktq-Vc-ihe"/>
                         <outlet property="salary" destination="Cx5-Gi-CGU" id="9js-I9-18T"/>
+                        <segue destination="Ogc-eK-KQ9" kind="show" identifier="finishEditOrDelete" id="OyA-jV-zsa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ry-WC-xBj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -944,8 +945,8 @@
         <image name="map" width="30" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jjO-Tw-eWK"/>
         <segue reference="V2C-JH-wEQ"/>
+        <segue reference="OyA-jV-zsa"/>
         <segue reference="iK2-gp-79p"/>
     </inferredMetricsTieBreakers>
 </document>

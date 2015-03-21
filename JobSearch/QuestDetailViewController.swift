@@ -25,7 +25,6 @@ class QuestDetailViewController: UIViewController {
         let alertBigController = UIAlertController(title: "Please conform", message: "Are you sure you want to continue?", preferredStyle: .Alert)
         
         
-        
         let yes = UIAlertAction(title: "Yes", style: .Default) { (_) in
             let defaults = NSUserDefaults.standardUserDefaults()
             if let token:String = defaults.valueForKey("token") as? String {
@@ -36,12 +35,10 @@ class QuestDetailViewController: UIViewController {
                     self.socket.on("response", callback: { (args:[AnyObject]!)  in
                         let arg = args as SIOParameterArray
                         let dict = arg[0] as NSDictionary
-                        println(dict)
                         if dict.objectForKey("message") as String == "post delete failed" {
                             let alertController = UIAlertController(title: "Sorry", message: "Since you are not the poster of this quest, you can't delete this quest", preferredStyle: .Alert)
                             let ok = UIAlertAction(title: "OK", style: .Default) { (_) in
-                                
-                                
+                        
                             }
                             
                             alertController.addAction(ok)
@@ -51,7 +48,6 @@ class QuestDetailViewController: UIViewController {
                             let ok = UIAlertAction(title: "OK", style: .Default) { (_) in
                                 NSNotificationCenter.defaultCenter().postNotificationName("addedJob", object: nil)
                                 self.navigationController?.popViewControllerAnimated(true)
-                                
                             }
                             
                             alertController.addAction(ok)
@@ -113,14 +109,15 @@ class QuestDetailViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+       
     }
-    */
+    
 
 }

@@ -15,7 +15,7 @@ class MyQuestTableViewController: UITableViewController {
     var from = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "My Quests"
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -61,6 +61,7 @@ class MyQuestTableViewController: UITableViewController {
         } else if from == "toMyQuest" {
             self.performSegueWithIdentifier("toQuestDetail", sender: self)
         }
+        
         
     }
     
