@@ -68,7 +68,7 @@ class ProfileViewController: UIViewController,UITableViewDelegate,UITableViewDat
         }else {
             let defaults = NSUserDefaults.standardUserDefaults()
             if let token:String = defaults.valueForKey("token") as? String {
-                SIOSocket.socketWithHost("http://nerved.herokuapp.com", response: { (socket:SIOSocket!) in
+                SIOSocket.socketWithHost(ServerConst.sharedInstance.serverURL, response: { (socket:SIOSocket!) in
                     
                     self.socket = socket;
                     self.socket.on("handshake", callback: { (args:[AnyObject]!)  in
@@ -134,7 +134,7 @@ class ProfileViewController: UIViewController,UITableViewDelegate,UITableViewDat
                 let defaults = NSUserDefaults.standardUserDefaults()
                 if let token:String = defaults.valueForKey("token") as? String {
 
-                SIOSocket.socketWithHost("http://nerved.herokuapp.com", response: { (socket:SIOSocket!) in
+                SIOSocket.socketWithHost(ServerConst.sharedInstance.serverURL, response: { (socket:SIOSocket!) in
                     
                     self.socket = socket;
                     let theToken = NSDictionary(objectsAndKeys: self.acceptedCourse, "uuid")
@@ -228,7 +228,7 @@ class ProfileViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
     
     func getMyQuestFromServer(){
-        SIOSocket.socketWithHost("http://nerved.herokuapp.com", response: { (socket:SIOSocket!) in
+        SIOSocket.socketWithHost(ServerConst.sharedInstance.serverURL, response: { (socket:SIOSocket!) in
             let defaults = NSUserDefaults.standardUserDefaults()
             if let token:String = defaults.valueForKey("token") as? String {
                 self.socket = socket;
@@ -285,7 +285,7 @@ class ProfileViewController: UIViewController,UITableViewDelegate,UITableViewDat
         })
     }
     func getMyAcceptedFromServer(){
-        SIOSocket.socketWithHost("http://nerved.herokuapp.com", response: { (socket:SIOSocket!) in
+        SIOSocket.socketWithHost(ServerConst.sharedInstance.serverURL, response: { (socket:SIOSocket!) in
             let defaults = NSUserDefaults.standardUserDefaults()
             if let token:String = defaults.valueForKey("token") as? String {
                 self.socket = socket;

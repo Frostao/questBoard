@@ -95,7 +95,7 @@ class SignUpViewController: UITableViewController,UITextFieldDelegate {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 1  && indexPath.row == 0{
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            SIOSocket.socketWithHost("http://nerved.herokuapp.com", response: { (socket:SIOSocket!) in
+            SIOSocket.socketWithHost(ServerConst.sharedInstance.serverURL, response: { (socket:SIOSocket!) in
                 
                 self.socket = socket;
                 self.socket.on("handshake", callback: { (args:[AnyObject]!)  in

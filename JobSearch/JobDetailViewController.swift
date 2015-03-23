@@ -21,7 +21,7 @@ class JobDetailViewController: UIViewController,UIAlertViewDelegate {
     @IBAction func apply(sender: UIButton) {
         let defaults = NSUserDefaults.standardUserDefaults()
         if let token:String = defaults.valueForKey("token") as? String {
-            SIOSocket.socketWithHost("http://nerved.herokuapp.com", response: { (socket:SIOSocket!) in
+            SIOSocket.socketWithHost(ServerConst.sharedInstance.serverURL, response: { (socket:SIOSocket!) in
                 self.socket = socket;
                 let dict = NSDictionary(objectsAndKeys: token,"token",self.currentJob!.postID,"postid")
                 self.socket.emit("accept", args: [dict])
@@ -84,7 +84,7 @@ class JobDetailViewController: UIViewController,UIAlertViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        SIOSocket.socketWithHost("http://nerved.herokuapp.com", response: { (socket:SIOSocket!) in
+        SIOSocket.socketWithHost(ServerConst.sharedInstance.serverURL, response: { (socket:SIOSocket!) in
             self.socket = socket;
             let dict = NSDictionary(objectsAndKeys: self.currentJob!.UUID,"uuid")
             self.socket.emit("uuid2phone", args: [dict])

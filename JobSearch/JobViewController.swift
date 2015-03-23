@@ -92,7 +92,7 @@ class JobViewController: UITableViewController,CLLocationManagerDelegate,UISearc
     
     
     func getDataFromServer() -> Void {
-        SIOSocket.socketWithHost("http://nerved.herokuapp.com", response: { (socket:SIOSocket!) in
+        SIOSocket.socketWithHost(ServerConst.sharedInstance.serverURL, response: { (socket:SIOSocket!) in
             self.socket = socket;
             self.socket.on("handshake", callback: { (args:[AnyObject]!)  in
                 let arg = args as SIOParameterArray
@@ -317,7 +317,7 @@ class JobViewController: UITableViewController,CLLocationManagerDelegate,UISearc
     }
     
     func getSearchResultsFromServer(keyword:String){
-        SIOSocket.socketWithHost("http://nerved.herokuapp.com", response: { (socket:SIOSocket!) in
+        SIOSocket.socketWithHost(ServerConst.sharedInstance.serverURL, response: { (socket:SIOSocket!) in
             self.socket = socket;
             let dict = NSDictionary(objectsAndKeys: ["\(keyword)"], "keywords")
             self.socket.emit("searchbykey", args: [dict])

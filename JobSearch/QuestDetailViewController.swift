@@ -28,7 +28,7 @@ class QuestDetailViewController: UIViewController {
         let yes = UIAlertAction(title: "Yes", style: .Default) { (_) in
             let defaults = NSUserDefaults.standardUserDefaults()
             if let token:String = defaults.valueForKey("token") as? String {
-                SIOSocket.socketWithHost("http://nerved.herokuapp.com", response: { (socket:SIOSocket!) in
+                SIOSocket.socketWithHost(ServerConst.sharedInstance.serverURL, response: { (socket:SIOSocket!) in
                     self.socket = socket;
                     let dict = NSDictionary(objectsAndKeys: token,"token",self.currentJob!.postID,"postid")
                     self.socket.emit("delete", args: [dict])
