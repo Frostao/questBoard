@@ -14,5 +14,5 @@ class ServerConst {
     class var sharedInstance : ServerConst {
         return _sharedInstance
     }
-    let serverURL = "http://nerved.herokuapp.com"
+    let serverURL = "https://nerved.herokuapp.com"
 }
