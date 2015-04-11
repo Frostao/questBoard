@@ -115,54 +115,20 @@ class AddViewController: UITableViewController,UITextFieldDelegate , CLLocationM
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 1  && indexPath.row == 0{
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            SIOSocket.socketWithHost(ServerConst.sharedInstance.serverURL, response: { (socket:SIOSocket!) in
-                
-                self.socket = socket;
-                self.socket.on("handshake", callback: { (args:[AnyObject]!)  in
-                    let arg = args as NSArray
-                    let dict = arg[0] as! NSDictionary
-                    //self.UIID.text = uuid as String?
-                    
-                })
-                
-                
-                
-                //println(userInfo)
-                
-                
-                let defaults = NSUserDefaults.standardUserDefaults()
-                let token = defaults.valueForKey("token") as! String
-                println(token)
-                let skills = self.skills.text.componentsSeparatedByString(",")
-                if let theLocation = self.location {
-                    let location = NSDictionary(objectsAndKeys: NSDictionary(objectsAndKeys: "Point","type",[theLocation.longitude, theLocation.latitude],"coordinates"),"location")
-                
-                //println(location)
-                    let userInfo = NSDictionary(objectsAndKeys: self.jobTitle.text,"title",self.jobDescription.text,"description",self.remarks.text, "remarks",skills,"skills",self.pay.text,"comp",(self.duration.text as NSString).doubleValue,"duration",token,"token",location["location"]!,"location")
-                    self.socket.emit("post", args: [userInfo])
+            ServerConst.sharedInstance.post(self.skills.text, location: self.location, jobTitle: self.jobTitle.text, jobDescription: self.jobDescription.text, remarks: self.remarks.text, pay: self.pay.text, duration: self.duration.text){(responseObject:Bool?, error:String?) in
+                if responseObject!{
+                    self.dismissViewControllerAnimated(true, completion: nil)
                 } else {
-                    let error = UIAlertView(title: "No location Found", message: "Please enable your location in privacy settings", delegate: self, cancelButtonTitle: "OK")
-                    error.show()
-                }
-                self.socket.on("response", callback: { (args:[AnyObject]!)  in
-                    let arg = args as NSArray
-                    println(arg.firstObject!)
-                    let dict = arg[0] as! NSDictionary
-                    if  dict["code"] as! Int != 200 {
+                    if error == "user Name incorrect"{
                         let alert = UIAlertView(title: "Incorrect email or password", message: "Incorrect email or password, please check your input", delegate: nil, cancelButtonTitle: "OK")
                         alert.show()
-                    } else {
-                        NSNotificationCenter.defaultCenter().postNotificationName("addedJob", object: nil)
-                        self.dismissViewControllerAnimated(true, completion: nil)
-                        
+                    } else if error == "location not found"{
+                        let error = UIAlertView(title: "No location Found", message: "Please enable your location in privacy settings", delegate: self, cancelButtonTitle: "OK")
+                        error.show()
                     }
-                    
-                    //let code: AnyObject? = dict["message"]
-                    
-                    //self.data.append(code! as String)
-                    //self.tableView.reloadData()
-                })
-            })
+                }
+            }
+            
         } else {
             
         }
@@ -180,59 +146,6 @@ class AddViewController: UITableViewController,UITextFieldDelegate , CLLocationM
             location = thisLocation.coordinate
         }
     }
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
-    
-    // Configure the cell...
-    
-    return cell
-    }
-    */
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    // Return NO if you do not want the specified item to be editable.
-    return true
-    }
-    */
-    
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-    if editingStyle == .Delete {
-    // Delete the row from the data source
-    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-    } else if editingStyle == .Insert {
-    // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }
-    }
-    */
-    
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-    
-    }
-    */
-    
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    // Return NO if you do not want the item to be re-orderable.
-    return true
-    }
-    */
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    }
-    */
+
     
 }
