@@ -26,8 +26,8 @@ class JobDetailViewController: UIViewController,UIAlertViewDelegate {
                 let dict = NSDictionary(objectsAndKeys: token,"token",self.currentJob!.postID,"postid")
                 self.socket.emit("accept", args: [dict])
                 self.socket.on("response", callback: { (args:[AnyObject]!)  in
-                    let arg = args as SIOParameterArray
-                    let dict = arg[0] as NSDictionary
+                    let arg = args as NSArray
+                    let dict = arg[0] as! NSDictionary
                     println(dict)
                     
                 })
@@ -89,8 +89,8 @@ class JobDetailViewController: UIViewController,UIAlertViewDelegate {
             let dict = NSDictionary(objectsAndKeys: self.currentJob!.UUID,"uuid")
             self.socket.emit("uuid2phone", args: [dict])
             self.socket.on("response", callback: { (args:[AnyObject]!)  in
-                let arg = args as SIOParameterArray
-                let dict = arg[0] as NSDictionary
+                let arg = args as NSArray
+                let dict = arg[0] as! NSDictionary
                 self.email = dict.objectForKey("data")![0] as? String
                 self.phoneNumber = dict.objectForKey("data")![1] as? String
                 

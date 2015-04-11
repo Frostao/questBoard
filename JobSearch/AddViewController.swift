@@ -75,7 +75,7 @@ class AddViewController: UITableViewController,UITextFieldDelegate , CLLocationM
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section == 0{
-            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as CustomTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CustomTableViewCell
             switch indexPath.row {
             case 0:
                 cell.label1?.text = "Job Title"
@@ -107,7 +107,7 @@ class AddViewController: UITableViewController,UITextFieldDelegate , CLLocationM
             cell.textField1.delegate = self
             return cell
         } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("submit", forIndexPath: indexPath) as UITableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("submit", forIndexPath: indexPath) as! UITableViewCell
             return cell
         }
     }
@@ -119,8 +119,8 @@ class AddViewController: UITableViewController,UITextFieldDelegate , CLLocationM
                 
                 self.socket = socket;
                 self.socket.on("handshake", callback: { (args:[AnyObject]!)  in
-                    let arg = args as SIOParameterArray
-                    let dict = arg[0] as NSDictionary
+                    let arg = args as NSArray
+                    let dict = arg[0] as! NSDictionary
                     //self.UIID.text = uuid as String?
                     
                 })
@@ -131,7 +131,7 @@ class AddViewController: UITableViewController,UITextFieldDelegate , CLLocationM
                 
                 
                 let defaults = NSUserDefaults.standardUserDefaults()
-                let token = defaults.valueForKey("token") as String
+                let token = defaults.valueForKey("token") as! String
                 println(token)
                 let skills = self.skills.text.componentsSeparatedByString(",")
                 if let theLocation = self.location {
@@ -145,10 +145,10 @@ class AddViewController: UITableViewController,UITextFieldDelegate , CLLocationM
                     error.show()
                 }
                 self.socket.on("response", callback: { (args:[AnyObject]!)  in
-                    let arg = args as SIOParameterArray
+                    let arg = args as NSArray
                     println(arg.firstObject!)
-                    let dict = arg[0] as NSDictionary
-                    if  dict["code"] as Int != 200 {
+                    let dict = arg[0] as! NSDictionary
+                    if  dict["code"] as! Int != 200 {
                         let alert = UIAlertView(title: "Incorrect email or password", message: "Incorrect email or password, please check your input", delegate: nil, cancelButtonTitle: "OK")
                         alert.show()
                     } else {
@@ -176,7 +176,7 @@ class AddViewController: UITableViewController,UITextFieldDelegate , CLLocationM
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         if let currentLocation = locations {
-            let thisLocation : CLLocation = currentLocation[0] as CLLocation
+            let thisLocation : CLLocation = currentLocation[0] as! CLLocation
             location = thisLocation.coordinate
         }
     }

@@ -57,7 +57,7 @@ class SignUpViewController: UITableViewController,UITextFieldDelegate {
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as CustomTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CustomTableViewCell
             switch indexPath.row {
             case 0:
                 cell.label1?.text = "Name        "
@@ -88,7 +88,7 @@ class SignUpViewController: UITableViewController,UITextFieldDelegate {
             cell.textField1.delegate = self
             return cell
         } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("signup", forIndexPath: indexPath) as UITableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("signup", forIndexPath: indexPath) as! UITableViewCell
             return cell
         }
     }
@@ -99,8 +99,8 @@ class SignUpViewController: UITableViewController,UITextFieldDelegate {
                 
                 self.socket = socket;
                 self.socket.on("handshake", callback: { (args:[AnyObject]!)  in
-                    let arg = args as SIOParameterArray
-                    let dict = arg[0] as NSDictionary
+                    let arg = args as NSArray
+                    let dict = arg[0] as! NSDictionary
                     //self.UIID.text = uuid as String?
                     
                 })
@@ -113,10 +113,10 @@ class SignUpViewController: UITableViewController,UITextFieldDelegate {
                 
                 self.socket.emit("register", args: [userInfo])
                 self.socket.on("response", callback: { (args:[AnyObject]!)  in
-                    let arg = args as SIOParameterArray
+                    let arg = args as NSArray
                     println(arg.firstObject!)
-                    let dict = arg[0] as NSDictionary
-                    if  dict["code"] as Int != 200 {
+                    let dict = arg[0] as! NSDictionary
+                    if  dict["code"] as! Int != 200 {
                         let alert = UIAlertView(title: "Incorrect email or password", message: "Incorrect email or password, please check your input", delegate: nil, cancelButtonTitle: "OK")
                         alert.show()
                     } else {

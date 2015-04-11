@@ -79,14 +79,14 @@ class LoginViewController: UITableViewController, UITextFieldDelegate{
 //            
             //Username row
             //cell = (tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as CustomTableViewCell)
-            let cell = (tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as CustomTableViewCell)
+            let cell = (tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CustomTableViewCell)
             cell.label1.text = "Email       "
             cell.textField1.delegate = self
             cell.textField1.keyboardType = UIKeyboardType.EmailAddress
             username = cell.textField1
             return cell
         } else if indexPath.section == 0 && indexPath.row == 2 {
-            let cell = (tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as CustomTableViewCell)
+            let cell = (tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CustomTableViewCell)
             cell.label1.text = "Password"
             cell.textField1.secureTextEntry = true;
             cell.textField1.delegate = self;
@@ -94,18 +94,18 @@ class LoginViewController: UITableViewController, UITextFieldDelegate{
             return cell
             //Password row
         } else if indexPath.section == 0 && indexPath.row == 0 {
-            let cell = (tableView.dequeueReusableCellWithIdentifier("image",forIndexPath: indexPath) as CustomTableViewCell)
+            let cell = (tableView.dequeueReusableCellWithIdentifier("image",forIndexPath: indexPath) as! CustomTableViewCell)
             cell.imageView1.image = UIImage(named: "Group")
             cell.backgroundColor = UIColor.clearColor()
             return cell
         } else if indexPath.section == 1 && indexPath.row == 0{
             //Submit row
-            let cell = tableView.dequeueReusableCellWithIdentifier("submit", forIndexPath:indexPath) as UITableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("submit", forIndexPath:indexPath) as! UITableViewCell
             cell.textLabel?.text = "Login"
             
             return cell
         } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("submit", forIndexPath: indexPath) as UITableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("submit", forIndexPath: indexPath) as! UITableViewCell
             cell.textLabel?.text = "Sign Up"
             return cell
             
@@ -120,8 +120,8 @@ class LoginViewController: UITableViewController, UITextFieldDelegate{
                 
                 self.socket = socket;
                 self.socket.on("handshake", callback: { (args:[AnyObject]!)  in
-                    let arg = args as SIOParameterArray
-                    let dict = arg[0] as NSDictionary
+                    let arg = args as NSArray
+                    let dict = arg[0] as! NSDictionary
                     //self.UIID.text = uuid as String?
                     
                 })
@@ -131,10 +131,10 @@ class LoginViewController: UITableViewController, UITextFieldDelegate{
                 
                 self.socket.emit("login", args: [userInfo])
                 self.socket.on("response", callback: { (args:[AnyObject]!)  in
-                    let arg = args as SIOParameterArray
+                    let arg = args as NSArray
                     //println(arg.firstObject!)
-                    let dict = arg[0] as NSDictionary
-                    if  dict["code"] as Int != 200 {
+                    let dict = arg[0] as! NSDictionary
+                    if  dict["code"] as! Int != 200 {
                         let alert = UIAlertView(title: "Incorrect email or password", message: "Incorrect email or password, please check your input", delegate: nil, cancelButtonTitle: "OK")
                         alert.show()
                     } else {

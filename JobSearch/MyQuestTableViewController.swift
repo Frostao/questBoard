@@ -44,7 +44,7 @@ class MyQuestTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
         cell.textLabel?.text = self.jobArray[indexPath.row].title
         cell.detailTextLabel?.text = self.jobArray[indexPath.row].salary
         // Configure the cell...
@@ -72,10 +72,10 @@ class MyQuestTableViewController: UITableViewController {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
         if segue.identifier == "toQuestDetail" {
-            let viewController = segue.destinationViewController as QuestDetailViewController
+            let viewController = segue.destinationViewController as! QuestDetailViewController
             viewController.currentJob = self.currentJob
         } else if segue.identifier == "toJobDetail" {
-            let viewController = segue.destinationViewController as JobDetailViewController
+            let viewController = segue.destinationViewController as! JobDetailViewController
             viewController.currentJob = self.currentJob
         }
     }

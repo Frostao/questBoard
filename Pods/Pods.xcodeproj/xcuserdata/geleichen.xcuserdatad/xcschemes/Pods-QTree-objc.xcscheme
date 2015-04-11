@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "39307E5C0F5A041AF669D4CC"
+               BlueprintIdentifier = "B44DE6419AF5A9CD38D121D0"
                BuildableName = "libPods-QTree-objc.a"
                BlueprintName = "Pods-QTree-objc"
                ReferencedContainer = "container:Pods.xcodeproj">

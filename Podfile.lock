@@ -7,7 +7,7 @@ DEPENDENCIES:
   - SIOSocket (~> 0.2)
 
 SPEC CHECKSUMS:
-  QTree-objc: 3c2cc51ce558adff7abf94a9507cfa53cd61f06b
-  SIOSocket: 40ebc9f014b9fec4ec595212faaf6f19cf29d1f2
+  QTree-objc: b8326e1a35b6f9fb47ce4f64736eb590534ea3c6
+  SIOSocket: 2facc0bd02ae72d98c223634a46dd8ebdf9be321
 
 COCOAPODS: 0.35.0

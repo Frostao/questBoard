@@ -35,7 +35,7 @@ class LocationViewController: UIViewController,CLLocationManagerDelegate,MKMapVi
         mapView.delegate = self
         
         //The "Find me" button
-        let button = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+        let button = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
         button.frame = CGRectMake(UIScreen.mainScreen().bounds.width - 70, self.view.frame.height - 90, 50, 50)
         button.setImage(UIImage(named: "MyLocation"), forState: .Normal)
         button.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -79,7 +79,7 @@ class LocationViewController: UIViewController,CLLocationManagerDelegate,MKMapVi
                 annotationView = ClusterAnnotationView(cluster: annotation)
             }
             annotationView!.canShowCallout = true
-            annotationView!.rightCalloutAccessoryView = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as UIButton
+            annotationView!.rightCalloutAccessoryView = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as! UIButton
             annotationView!.cluster = annotation
             return annotationView
         }
@@ -89,7 +89,7 @@ class LocationViewController: UIViewController,CLLocationManagerDelegate,MKMapVi
    
     func mapView(mapView: MKMapView!, didSelectAnnotationView view: MKAnnotationView!) {
         for job in jobArray {
-            if job.title == (view.annotation as JobAnnotation).title {
+            if job.title == (view.annotation as! JobAnnotation).title {
                 self.currentJob = job
                 self.performSegueWithIdentifier("transformToJobDetail", sender: self)
             }
@@ -103,14 +103,14 @@ class LocationViewController: UIViewController,CLLocationManagerDelegate,MKMapVi
         let mapRegion = self.mapView.region
         let minNonClusteredSpan = min(mapRegion.span.latitudeDelta, mapRegion.span.longitudeDelta) / 5
         let objects = self.qTree.getObjectsInRegion(mapRegion, minNonClusteredSpan: minNonClusteredSpan) as NSArray
-        let annotationsToRemove = (self.mapView.annotations as NSArray).mutableCopy() as NSMutableArray
+        let annotationsToRemove = (self.mapView.annotations as NSArray).mutableCopy() as! NSMutableArray
         annotationsToRemove.removeObject(self.mapView.userLocation)
-        annotationsToRemove.removeObjectsInArray(objects)
-        self.mapView.removeAnnotations(annotationsToRemove)
-        let annotationsToAdd = objects.mutableCopy() as NSMutableArray
+        annotationsToRemove.removeObjectsInArray(objects as [AnyObject])
+        self.mapView.removeAnnotations(annotationsToRemove as [AnyObject])
+        let annotationsToAdd = objects.mutableCopy() as! NSMutableArray
         annotationsToAdd.removeObjectsInArray(self.mapView.annotations)
         
-        self.mapView.addAnnotations(annotationsToAdd)
+        self.mapView.addAnnotations(annotationsToAdd as [AnyObject])
 
 
     }
@@ -120,7 +120,7 @@ class LocationViewController: UIViewController,CLLocationManagerDelegate,MKMapVi
   
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "transformToJobDetail" {
-            let viewController = segue.destinationViewController as JobDetailViewController
+            let viewController = segue.destinationViewController as! JobDetailViewController
             viewController.currentJob = currentJob
         }
         

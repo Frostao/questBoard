@@ -33,9 +33,9 @@ class QuestDetailViewController: UIViewController {
                     let dict = NSDictionary(objectsAndKeys: token,"token",self.currentJob!.postID,"postid")
                     self.socket.emit("delete", args: [dict])
                     self.socket.on("response", callback: { (args:[AnyObject]!)  in
-                        let arg = args as SIOParameterArray
-                        let dict = arg[0] as NSDictionary
-                        if dict.objectForKey("message") as String == "post delete failed" {
+                        let arg = args as NSArray
+                        let dict = arg[0] as! NSDictionary
+                        if dict.objectForKey("message") as! String == "post delete failed" {
                             let alertController = UIAlertController(title: "Sorry", message: "Since you are not the poster of this quest, you can't delete this quest", preferredStyle: .Alert)
                             let ok = UIAlertAction(title: "OK", style: .Default) { (_) in
                         
